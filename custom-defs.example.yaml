@@ -1,0 +1,22 @@
+providers:
+  hookbin:
+    validation:
+      request:
+        params:
+        - name: hookbin_1
+          desc: hookbin ID (https://hookb.in)
+        - name: hookbin_2
+          desc: fake key to put as a query param
+        id: "postbin:validation"
+        desc: "Postbin: valid key"
+        uri: "https://hookb.in/{{hookbin_1}}?q={{hookbin_2}}"
+        method: post
+      response:
+        status_code: "200"
+        body: ok
+      examples:
+        ok:
+          status_code: "201"
+          body: hello
+        err:
+          status_code: "500"

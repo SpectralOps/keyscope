@@ -1,0 +1,13 @@
+{
+  "name": "keyscope",
+  "private": true,
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "sync-providers": "node tooling/sync-providers.js"
+  },
+  "devDependencies": {
+    "lodash": "^4.17.21",
+    "yaml": "^1.10.2"
+  }
+}

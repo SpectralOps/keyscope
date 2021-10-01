@@ -1,0 +1,577 @@
+providers:
+  hookbin:
+    validation:
+      request:
+        params:
+        - name: hookbin_1
+          desc: hookbin ID (https://hookb.in)
+        - name: hookbin_2
+          desc: fake key to put as a query param
+        id: "postbin:validation"
+        desc: "Postbin: valid key"
+        uri: "https://hookb.in/{{hookbin_1}}?q={{hookbin_2}}"
+        method: post
+      response:
+        status_code: "200"
+        body: ok
+      examples:
+        ok:
+          status_code: "201"
+          body: hello
+        err:
+          status_code: "500"
+
+  covalenthq:
+    validation:
+      request:
+        id: "covalent:validation"
+        desc: "Covalent: valid key"
+        params:
+        - name: covalenthq_1
+          desc: covalent token
+        uri: https://api.covalenthq.com/v1/chains/?key={{covalenthq_1}}
+      response:
+        status_code: "200"
+      examples:
+        ok:
+          status_code: "200"
+        err:
+          status_code: "500"
+
+  asana:
+    validation:
+      request:
+        id: "asana:validation"
+        desc: "Asana: valid token"
+        params:
+        - name: asana_1
+          desc: asana token
+        uri: https://app.asana.com/api/1.0/users/me
+        headers:
+          Authorization: 
+          - "Bearer {{asana_1}}"
+      response:
+        status_code: "200"
+
+  bitly:
+    validation:
+      request:
+        id: "bitly:validation"
+        desc: "Bit.ly: valid access token"
+        params:
+        - name: bitly_1 
+          desc: bit.ly token
+        uri: https://api-ssl.bitly.com/v3/shorten?access_token={{bitly_1}}&longUrl=https://www.google.com
+      response:
+        body: "status_code\":200"
+
+  localytics:
+    validation:
+      request:
+        id: "localytics:validation"
+        desc: "Localytics: valid API credentials"
+        params:
+        - name: localytics_1
+          desc: localytics user
+        - name: localytics_2
+          desc: localytics key
+        uri: https://api.localytics.com/v1/apps/
+        method: get
+        basic_auth:
+          user: "{{localytics_1}}"
+          password: "{{localytics_2}}"
+        headers:
+          Accept: 
+          - application/vnd.localytics.v1+hal+json
+      response:
+        status_code: "200"
+
+  algolia:
+    validation:
+      request:
+        id: "algolia:validation"
+        desc: "Algolia: valid API credentials"
+        params:
+        - name: algolia_1
+          desc: algolia application ID
+        - name: algolia_2
+          desc: algolia index
+        - name: algolia_3 
+          desc: algolia API key
+        uri: https://{{algolia_1}}-dsn.algolia.net/1/indexes/{{algolia_2}}/settings
+        method: get
+        headers:
+          X-Algolia-Application-Id: 
+          - "{{algolia_1}}"
+          X-Algolia-API-Key: 
+          - "{{algolia_3}}"
+      response:
+        status_code: "200"
+
+  branchio:
+    validation:
+      request:
+        id: "branch.io:validation"
+        desc: "branch.io: valid API credentials"
+        params:
+        - name: branchio_1
+          desc: branch.io key
+        - name: branchio_2 
+          desc: branch.io secret
+        uri: https://api2.branch.io/v1/app/{{branchio_1}}?branch_secret={{branchio_2}}
+        method: get
+      response:
+        status_code: "200"
+
+  browserstack:
+    validation:
+      request:
+        id: "browserstack:validation"
+        desc: "browserstack: valid API credentials"
+        params:
+        - name: browserstack_1
+          desc: browserstack key
+        - name: browserstack_2
+          desc: browserstack secret
+        uri: https://api.browserstack.com/automate/plan.json
+        method: get
+        basic_auth:
+          user: "{{browserstack_1}}"
+          password: "{{browserstack_2}}"
+      response:
+        status_code: "200"
+
+  buildkite:
+    validation:
+      request:
+        id: "buildkite:validation"
+        desc: "Buildkite: valid token"
+        params:
+        - name: buildkite_1
+          desc: buildkite token
+        uri: https://api.buildkite.com/v2/user
+        headers:
+          Authorization: 
+          - "Bearer {{buildkite_1}}"
+      response:
+        status_code: "200"
+
+  datadog:
+    validation:
+      request:
+        id: "datadog:validation"
+        desc: "datadog: valid API credentials"
+        params:
+        - name: datadog_1
+          desc: datadog API key
+        uri: https://api.datadoghq.com/api/v1/validate
+        method: get
+        headers:
+          DD-API-KEY:
+          - "{{datadog_1}}"
+      response:
+        status_code: "200"
+
+  github:
+    validation:
+      request:
+        id: "github:validation"
+        desc: "github: valid API credentials"
+        params:
+        - name: github_1
+          desc: github token
+        uri: https://api.github.com/user
+        method: get
+        headers:
+          Authorization:
+          - token {{github_1}}
+      response:
+        status_code: "200"
+
+  dropbox:
+    validation:
+      request:
+        id: "dropbox:validation"
+        desc: "dropbox: valid API credentials"
+        params:
+        - name: dropbox_1
+          desc: dropbox token
+        uri: https://api.dropboxapi.com/2/users/get_current_account
+        method: post
+        headers:
+          Authorization:
+          - Bearer {{dropbox_1}}
+      response:
+        status_code: "200"
+
+  gitlab:
+    validation:
+      request:
+        id: "gitlab:validation"
+        desc: "gitlab: valid API credentials"
+        params:
+        - name: gitlab_1
+          desc: gitlab token
+        uri: https://gitlab.com/api/v4/user
+        method: get
+        headers:
+          Authorization:
+          - Bearer {{gitlab_1}}
+      response:
+        status_code: "200"
+
+
+  heroku:
+    validation:
+      request:
+        id: "heroku:validation"
+        desc: "heroku: valid API credentials"
+        params:
+        - name: heroku_1
+          desc: heroku token
+        uri: https://api.heroku.com/account
+        method: get
+        headers:
+          Accept:
+          - "application/vnd.heroku+json; version=3"
+          Authorization:
+          - Bearer {{heroku_1}}
+      response:
+        status_code: "200"
+
+  mailchimp:
+    validation:
+      request:
+        id: "mailchimp:validation"
+        desc: "mailchimp: valid API credentials"
+        params:
+        - name: mailchimp_1
+          desc: mailchimp datacenter ID
+        - name: mailchimp_2
+          desc: mailchimp key
+        uri: https://{{mailchimp_1}}.api.mailchimp.com/3.0/lists
+        method: get
+        basic_auth:
+          user: any
+          password: "{{mailchimp_2}}"
+      response:
+        status_code: "200"
+
+  mailgun:
+    validation:
+      request:
+        id: "mailgun:validation"
+        desc: "mailgun: valid API credentials"
+        params:
+        - name: mailgun_1
+          desc: mailgun key
+        uri: https://api.mailgun.net/v3/domains
+        method: get
+        basic_auth:
+          user: api
+          password: "{{mailgun_1}}"
+      response:
+        status_code: "200"
+
+
+  pagerduty:
+    validation:
+      request:
+        id: "pagerduty:validation"
+        desc: "pagerduty: valid API credentials"
+        params:
+        - name: pagerduty_1
+          desc: pagerduty token
+        uri: https://api.pagerduty.com/schedules
+        method: get
+        headers:
+          Accept:
+          - "application/vnd.pagerduty+json;version=2"
+          Authorization:
+          - Token token={{pagerduty_1}}
+      response:
+        status_code: "200"
+
+
+  circleci:
+    validation:
+      request:
+        id: "circleci:validation"
+        desc: "circleci: valid API credentials"
+        params:
+        - name: circleci_1
+          desc: circleci key
+        uri: https://circleci.com/api/v2/me
+        method: get
+        headers:
+          Circle-Token: 
+          - "{{circleci_1}}"
+      response:
+        status_code: "200"
+
+  facebook-access-token:
+    validation:
+      request:
+        id: "facebook:validation"
+        desc: "facebook: valid API token"
+        params:
+        - name: facebook-access-token_1
+          desc: facebook token
+        uri: https://developers.facebook.com/tools/debug/accesstoken/?version=v3.2&access_token={{facebook-access-token_1}}
+        method: get
+      response:
+        status_code: "200"
+
+  salesforce:
+    validation:
+      request:
+        id: "salesforce:validation"
+        desc: "salesforce: valid API credentials"
+        params:
+        - name: salesforce_1
+          desc: salesforce instance name
+        - name: salesforce_2
+          desc: salesforce token
+        uri: https://{{salesforce_1}}.salesforce.com/services/data/v20.0/
+        method: get
+        headers:
+          Authorization:
+          - Bearer {{salesforce_2}}
+      response:
+        status_code: "200"
+
+  jumpcloud:
+    validation:
+      request:
+        id: "jumpcloud:validation"
+        desc: "jumpcloud: valid API credentials"
+        params:
+        - name: jumpcloud_1
+          desc: jumpcloud key
+        uri: https://console.jumpcloud.com/api/v2/systemgroups
+        method: get
+        headers:
+          x-api-key:
+          - "{{jumpcloud_1}}"
+      response:
+        status_code: "200"
+
+
+  saucelabs-us:
+    validation:
+      request:
+        id: "saucelabs-us:validation"
+        desc: "saucelabs-us: valid API credentials"
+        params:
+        - name: saucelabs-us_1
+          desc: saucelabs user
+        - name: saucelabs-us_2
+          desc: saucelabs key
+        uri: https://api.us-west-1.saucelabs.com/team-management/v1/teams
+        method: get
+        basic_auth:
+          user: "{{saucelabs-us_1}}"
+          password: "{{saucelabs-us_2}}"
+      response:
+        status_code: "200"
+
+  saucelabs-eu:
+    validation:
+      request:
+        id: "saucelabs-eu:validation"
+        desc: "saucelabs-eu: valid API credentials"
+        params:
+        - name: saucelabs-eu_1
+          desc: saucelabs user
+        - name: saucelabs-eu_2
+          desc: saucelabs key
+        uri: https://api.eu-central-1.saucelabs.com/team-management/v1/teams
+        method: get
+        basic_auth:
+          user: "{{saucelabs-eu_1}}"
+          password: "{{saucelabs-eu_2}}"
+      response:
+        status_code: "200"
+
+
+  sendgrid:
+    validation:
+      request:
+        id: "sendgrid:validation"
+        desc: "sendgrid: valid API credentials"
+        params:
+        - name: sendgrid_1
+          desc: sendgrid key
+        uri: https://api.sendgrid.com/v3/scopes
+        method: get
+        headers:
+          Content-Type:
+          - application/json
+          Authorization:
+          - Bearer {{sendgrid_1}}
+      response:
+        status_code: "200"
+
+  slack:
+    validation:
+      request:
+        id: "slack:validation"
+        desc: "slack: valid API credentials"
+        params:
+        - name: slack_1
+          desc: slack key
+        uri: https://slack.com/api/auth.test
+        method: post
+        headers:
+          Authorization:
+          - Bearer {{slack_1}}
+      response:
+        # negative lookahead as a negated match
+        body: "^((?!invalid_auth).)*$"
+  slack-webhook:
+    validation:
+      request:
+        id: "slack-webook:validation"
+        desc: "slack-webook: valid API credentials"
+        params:
+        - name: slack-webhook_1
+          desc: slack webhook
+        uri: "{{slack-webhook_1}}"
+        method: post
+        headers:
+          Content-Type:
+          - application/json
+        body: "{\"text\": \"\"}"
+      response:
+        body: (missing_text_or_fallback_or_attachments|no_text)
+
+
+  stripe:
+    validation:
+      request:
+        id: "stripe:validation"
+        desc: "stripe: valid API credentials"
+        params:
+        - name: stripe_1
+          desc: stripe key
+        uri: https://api.stripe.com/v1/charges
+        method: get
+        basic_auth:
+          user: "{{stripe_1}}"
+      response:
+        status_code: "200"
+
+  travisci:
+    validation:
+      request:
+        id: "travisci:validation"
+        desc: "travisci: valid API credentials"
+        params:
+        - name: travisci_1
+          desc: travisci domain, choose 'org' or 'com'
+        - name: travisci_2
+          desc: travisci key
+        uri: https://api.travis-ci.{{travisci_1}}/user
+        method: get
+        headers:
+          Travis-API-Version:
+          - "3"
+          Authorization:
+          - token {{travisci_2}}
+      response:
+        status_code: "200"
+
+  twilio:
+    validation:
+      request:
+        id: "twilio:validation"
+        desc: "twilio: valid API credentials"
+        params:
+        - name: twilio_1
+          desc: twilio account sid
+        - name: twilio_2
+          desc: twilio token
+        uri: https://api.twilio.com/2010-04-01/Accounts
+        method: get
+        basic_auth:
+          user: "{{twilio_1}}"
+          password: "{{twilio_2}}"
+      response:
+        status_code: "200"
+
+  twitter:
+    validation:
+      request:
+        id: "twitter:validation"
+        desc: "twitter: valid API credentials"
+        params:
+        - name: twitter_1
+          desc: twitter API token
+        uri: https://api.twitter.com/1.1/account_activity/all/subscriptions/count.json
+        method: get
+        headers:
+          Authorization:
+          - Bearer {{twitter_1}}
+      response:
+        status_code: "200"
+
+  zendesk:
+    validation:
+      request:
+        id: "zendesk:validation"
+        desc: "zendesk: valid API credentials"
+        params:
+        - name: zendesk_1
+          desc: zendesk domain
+        - name: zendesk_2
+          desc: zendesk key
+        uri: https://{{zendesk_1}}.zendesk.com/api/v2/tickets.json
+        method: get
+        headers:
+          Authorization:
+          - Bearer {{zendesk_2}}
+      response:
+        status_code: "200"
+
+  firebase:
+    validation:
+      request:
+        id: "firebase:validation"
+        desc: "firebase: valid API credentials"
+        params:
+        - name: firebase_1
+          desc: firebase API key
+        - name: firebase_2
+          desc: firebase ID token
+        uri: https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyCustomToken?key={{firebase_1}}
+        method: post
+        headers:
+          Content-Type:
+          - application/json
+        body: "{\"idToken\": \"{{firebase_2}}\"}"
+      response:
+        status_code: "200"
+
+  aws:
+    validation:
+      request:
+        id: "aws:validation"
+        desc: "aws: valid API credentials"
+        params:
+        - name: aws_1
+          desc: AWS ID
+        - name: aws_2
+          desc: AWS secret
+        uri: https://sts.amazonaws.com
+        method: post
+        aws_auth:
+          key: "{{aws_1}}"
+          secret: "{{aws_2}}"
+          service: "sts"
+        headers:
+          content-type:
+          - application/x-www-form-urlencoded
+        body: "Action=GetCallerIdentity&Version=2011-06-15"
+      response:
+        status_code: "200"
+
