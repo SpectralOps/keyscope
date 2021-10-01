@@ -27,7 +27,7 @@ fn main() {
         .arg(
             Arg::new("reporter")
                 .short('r')
-                .long("reproter")
+                .long("reporter")
                 .value_name("REPORTER")
                 .takes_value(true)
                 .possible_values(&["console"])
