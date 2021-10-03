@@ -33,7 +33,7 @@ Current workflows supported:
 
 * With Rust, _"If it compiles, it works."_ and also, it compiles to many platforms.
 * Rust is _fast_, has no _VM_, or unnecessary cruft (typically 5-8mb binaries with LOTS of code and libraries).
-* Multi purpose, safe, and generalistic - makes for healthy and expressive mission critical code. Adding code or abstraction doesn't increase bloat, doesn't hurt performance, doesn't increase chance for bugs in a radical way (less edge cases).
+* Multi purpose, safe, and generalistic - makes for healthy and expressive [mission critical code](https://www.youtube.com/watch?v=ylOpCXI2EMM). Adding code or abstraction doesn't increase bloat, doesn't hurt performance, doesn't increase chance for bugs in a radical way (less edge cases).
 * Amazing package manager: `Cargo`. Productive installing and running of tasks and examples.
 * Rust is getting headlines in the security community as the go-to language for security tools. Equally interesting is offensive security + Rust [here](https://github.com/trickster0/OffensiveRust) and [here](https://github.com/skerkour/black-hat-rust).
 
