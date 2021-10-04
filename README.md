@@ -296,7 +296,95 @@ providers:
 
 When in doubt, you can check keyscope's own [defs.yaml](src/defs.yaml) for real examples of how to use this infrastructure.
 
+## Tutorial: adding Dropbox
 
+To validate if a dropbox API key works, we first need to learn about the canonical way to authenticate against that API.
+
+First stop, API docs:
+
+* Dropbox has an [API Explorer](https://dropbox.github.io/dropbox-api-v2-explorer) which is super useful
+
+Next stop, we want to find an API call that is a representative for:
+
+* Has to be authenticated
+* Has to indicate that when accessed successfully with our candidate key, the key has some authoritative value. Which means, that if exposed, contains significant risk.
+
+For this example, getting our current account sounds like something that only when we identify who we are - we're able to do.
+
+We'll select [get_current_account](https://www.dropbox.com/developers/documentation/http/documentation#users-get_current_account).
+
+Let's start forming our interaction. First the needed skeleton: containing the name of the provider (`dropbox`), its ID and description below, as well as parameters required and their name and description:
+
+```yaml
+  dropbox:
+    validation:
+      request:
+        id: "dropbox:validation"
+        desc: "dropbox: valid API credentials"
+        params:
+        - name: dropbox_1
+          desc: dropbox token
+```
+
+We keep the name of the parameter with a special convention that helps when feeding keyscope automatically:
+
+```
+PROVIDER_N
+Where 'N' starts in 1 e.g.:
+dropbox_1
+dropbox_2
+aws_1
+...
+```
+
+Then, details about actually making an HTTP call, as required by Dropbox (Bearer token authentication).
+
+```yaml
+        uri: https://api.dropboxapi.com/2/users/get_current_account
+        method: post
+        headers:
+          Authorization:
+          - Bearer {{dropbox_1}}
+```
+
+Note that per standard, all HTTP header fields are actually _arrays_. It's OK to always make an array of size _one_ if you only have one value (most common case).
+
+We also see _variable interpolation_ here. Where `{{dropbox_1}}` will get replaced by keyscope in time before making the actual call.
+
+
+Finally, we want to make sure we answer the question:
+
+* What does it mean to have a successful call?
+
+In our case, the Dropbox API call returns `HTTP OK` on success, which means a `200` status code.
+
+And the final, complete result is this:
+
+```yaml
+dropbox:
+  validation:
+    request:
+      id: "dropbox:validation"
+      desc: "dropbox: valid API credentials"
+      params:
+      - name: dropbox_1
+        desc: dropbox token
+      uri: https://api.dropboxapi.com/2/users/get_current_account
+      method: post
+      headers:
+        Authorization:
+        - Bearer {{dropbox_1}}
+    response:
+      status_code: "200"
+```
+
+Meanwhile, you can drop this provider in your own `providers.yaml` file and run keyscope:
+
+```
+$ keyscope -f providers.yaml validate dropbox -p MY_KEY
+```
+
+Now you can keep this in your private `providers.yaml` file or contribute it back to keyscope if you think other people might enjoy using it - we're happy to accept pull requests.
 
 
 
