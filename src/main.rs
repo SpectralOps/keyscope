@@ -137,7 +137,7 @@ fn validate_command(matches: &ArgMatches, cmd_matches: &ArgMatches) -> AnyResult
         matches.is_present("flip"),
         matches.value_of("reporter").map(|s| s.to_string()),
         matches.is_present("verbose"),
-    )?;
+    );
     if cmd_matches.is_present("list") {
         let mut vec = defs.providers.iter().collect::<Vec<_>>();
         vec.sort_by(|(p1, _), (p2, _)| p1.cmp(p2));
@@ -192,7 +192,7 @@ fn validate_command(matches: &ArgMatches, cmd_matches: &ArgMatches) -> AnyResult
             interactions.push(interaction);
         }
 
-        let mut runner = SequenceRunner::from_opts(&opts);
+        let runner = SequenceRunner::from_opts(&opts);
 
         let resp = runner.run(&mut context, &interactions);
         Ok(resp.ok)
@@ -232,7 +232,7 @@ fn validate_command(matches: &ArgMatches, cmd_matches: &ArgMatches) -> AnyResult
         });
         let interaction = defs.validation_for(&context, &provider)?;
 
-        let mut runner = SequenceRunner::from_opts(&opts);
+        let runner = SequenceRunner::from_opts(&opts);
 
         let resp = runner.run(&mut context, &vec![interaction]);
         Ok(resp.ok)

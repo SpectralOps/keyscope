@@ -9,7 +9,7 @@ build = "build.rs"
 [dependencies]
 
 clap = "3.0.0-beta.4"
-service_policy_kit="0.2.0"
+service_policy_kit="0.3.0"
 serde="*"
 serde_json="*"
 serde_derive="*"
