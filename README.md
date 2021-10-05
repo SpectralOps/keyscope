@@ -23,7 +23,7 @@
 
 # :key: Keyscope
 
-Keyscope is a key and secret workflow (validation, invalidation, etc.) tool built in Rust, powered by `service_policy_kit`.
+Keyscope is a key and secret workflow (validation, invalidation, etc.) tool built in Rust, powered by [`service_policy_kit`](https://github.com/spectralops/service-policy-kit).
 
 Current workflows supported:
 
@@ -204,7 +204,7 @@ $ keyscope --flip validate --csv-in my-key-audit.csv
 
 We're always adding [new providers](src/defs.yaml), keep a link to this list or watch this repo to get updated.
 
-We use our `service_policy_toolkit` library to specify interactions with services and their policies, if you find a service [not in this list](src/defs.yaml) feel free to open an issue or contribute back.
+We use our [`service_policy_kit`](https://github.com/spectralops/service-policy-kit) library to specify interactions with services and their policies, if you find a service [not in this list](src/defs.yaml) feel free to open an issue or contribute back.
 
 
 <!-- providers -->
