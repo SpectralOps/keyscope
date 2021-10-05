@@ -2,7 +2,7 @@
 <br/>
 <br/>
 <br/>
-   <img src="media/ks.png" width="1019"/>
+   <img src="media/ks.png" width="420"/>
 <br/>
 <br/>
 </p>
@@ -16,12 +16,12 @@
 <hr/>
 </p>
 
-<p align="center">
-<img src="https://github.com/spectralops/keyscope/actions/workflows/build.yml/badge.svg"/>
 
+<p align="center">
+<img src="media/screen.png" width="1019"/>
 </p>
 
-# :key: Keyscope
+# :key: Keyscope <img src="https://github.com/spectralops/keyscope/actions/workflows/build.yml/badge.svg"/>
 
 Keyscope is a key and secret workflow (validation, invalidation, etc.) tool built in Rust, powered by [`service_policy_kit`](https://github.com/spectralops/service-policy-kit).
 
