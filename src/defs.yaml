@@ -654,3 +654,22 @@ providers:
         status_code: "200"
       invalid:
         status_code: "5\\d\\d"
+
+  artifactory:
+    validation:
+      request:
+        id: "artifactory:validation"
+        desc: "Artifactory: token validation"
+        params:
+        - name: artifactory_1
+          desc: Artifactory host (including http(s) part)
+        - name: artifactory_2
+          desc: Artifactory token
+        uri: "{{artifactory_1}}/api/system/ping"
+        headers:
+          X-JFrog-Art-API: 
+          - "{{artifactory_2}}"
+      response:
+        status_code: "200"
+      invalid:
+        status_code: "5\\d\\d"
