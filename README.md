@@ -208,42 +208,46 @@ We use our [`service_policy_kit`](https://github.com/spectralops/service-policy-
 
 
 <!-- providers -->
-| provider              | actions    | params                                                                                                 |
-| --------------------- | ---------- | ------------------------------------------------------------------------------------------------------ |
-| hookbin               | validation | `hookbin_1` - hookbin ID (https://hookb.in)<br/>`hookbin_2` - fake key to put as a query param         |
-| covalenthq            | validation | `covalenthq_1` - covalent token                                                                        |
-| asana                 | validation | `asana_1` - asana token                                                                                |
-| bitly                 | validation | `bitly_1` - bit.ly token                                                                               |
-| localytics            | validation | `localytics_1` - localytics user<br/>`localytics_2` - localytics key                                   |
-| algolia               | validation | `algolia_1` - algolia application ID<br/>`algolia_2` - algolia index<br/>`algolia_3` - algolia API key |
-| branchio              | validation | `branchio_1` - branch.io key<br/>`branchio_2` - branch.io secret                                       |
-| browserstack          | validation | `browserstack_1` - browserstack key<br/>`browserstack_2` - browserstack secret                         |
-| buildkite             | validation | `buildkite_1` - buildkite token                                                                        |
-| datadog               | validation | `datadog_1` - datadog API key                                                                          |
-| github                | validation | `github_1` - github token                                                                              |
-| dropbox               | validation | `dropbox_1` - dropbox token                                                                            |
-| gitlab                | validation | `gitlab_1` - gitlab token                                                                              |
-| heroku                | validation | `heroku_1` - heroku token                                                                              |
-| mailchimp             | validation | `mailchimp_1` - mailchimp datacenter ID<br/>`mailchimp_2` - mailchimp key                              |
-| mailgun               | validation | `mailgun_1` - mailgun key                                                                              |
-| pagerduty             | validation | `pagerduty_1` - pagerduty token                                                                        |
-| circleci              | validation | `circleci_1` - circleci key                                                                            |
-| facebook-access-token | validation | `facebook-access-token_1` - facebook token                                                             |
-| salesforce            | validation | `salesforce_1` - salesforce instance name<br/>`salesforce_2` - salesforce token                        |
-| jumpcloud             | validation | `jumpcloud_1` - jumpcloud key                                                                          |
-| saucelabs-us          | validation | `saucelabs-us_1` - saucelabs user<br/>`saucelabs-us_2` - saucelabs key                                 |
-| saucelabs-eu          | validation | `saucelabs-eu_1` - saucelabs user<br/>`saucelabs-eu_2` - saucelabs key                                 |
-| sendgrid              | validation | `sendgrid_1` - sendgrid key                                                                            |
-| slack                 | validation | `slack_1` - slack key                                                                                  |
-| slack-webhook         | validation | `slack-webhook_1` - slack webhook                                                                      |
-| stripe                | validation | `stripe_1` - stripe key                                                                                |
-| travisci              | validation | `travisci_1` - travisci domain, choose 'org' or 'com'<br/>`travisci_2` - travisci key                  |
-| twilio                | validation | `twilio_1` - twilio account sid<br/>`twilio_2` - twilio token                                          |
-| twitter               | validation | `twitter_1` - twitter API token                                                                        |
-| zendesk               | validation | `zendesk_1` - zendesk domain<br/>`zendesk_2` - zendesk key                                             |
-| firebase              | validation | `firebase_1` - firebase API key<br/>`firebase_2` - firebase ID token                                   |
-| aws                   | validation | `aws_1` - AWS ID<br/>`aws_2` - AWS secret                                                              |
+| provider | actions | params |
+|---|---|---|
+|**tester**<br/>Tester: valid key|validation|`tester_1` - hookbin ID (https://hookb.in)<br/>`tester_2` - fake key to put as a query param|
+|**covalenthq**<br/>Covalent: valid key|validation|`covalenthq_1` - covalent token|
+|**asana**<br/>Asana: valid token|validation|`asana_1` - asana token|
+|**bitly**<br/>Bit.ly: valid access token|validation|`bitly_1` - bit.ly token|
+|**localytics**<br/>Localytics: valid API credentials|validation|`localytics_1` - localytics user<br/>`localytics_2` - localytics key|
+|**algolia**<br/>Algolia: valid API credentials|validation|`algolia_1` - algolia application ID<br/>`algolia_2` - algolia index<br/>`algolia_3` - algolia API key|
+|**branchio**<br/>branch.io: valid API credentials|validation|`branchio_1` - branch.io key<br/>`branchio_2` - branch.io secret|
+|**browserstack**<br/>browserstack: valid API credentials|validation|`browserstack_1` - browserstack key<br/>`browserstack_2` - browserstack secret|
+|**buildkite**<br/>Buildkite: valid token|validation|`buildkite_1` - buildkite token|
+|**datadog**<br/>datadog: valid API credentials|validation|`datadog_1` - datadog API key|
+|**github**<br/>github: valid API credentials|validation|`github_1` - github token|
+|**dropbox**<br/>dropbox: valid API credentials|validation|`dropbox_1` - dropbox token|
+|**gitlab**<br/>gitlab: valid API credentials|validation|`gitlab_1` - gitlab token|
+|**heroku**<br/>heroku: valid API credentials|validation|`heroku_1` - heroku token|
+|**mailchimp**<br/>mailchimp: valid API credentials|validation|`mailchimp_1` - mailchimp datacenter ID<br/>`mailchimp_2` - mailchimp key|
+|**mailgun**<br/>mailgun: valid API credentials|validation|`mailgun_1` - mailgun key|
+|**pagerduty**<br/>pagerduty: valid API credentials|validation|`pagerduty_1` - pagerduty token|
+|**circleci**<br/>circleci: valid API credentials|validation|`circleci_1` - circleci key|
+|**facebook-access-token**<br/>facebook: valid API token|validation|`facebook-access-token_1` - facebook token|
+|**salesforce**<br/>salesforce: valid API credentials|validation|`salesforce_1` - salesforce instance name<br/>`salesforce_2` - salesforce token|
+|**jumpcloud**<br/>jumpcloud: valid API credentials|validation|`jumpcloud_1` - jumpcloud key|
+|**saucelabs-us**<br/>saucelabs-us: valid API credentials|validation|`saucelabs-us_1` - saucelabs user<br/>`saucelabs-us_2` - saucelabs key|
+|**saucelabs-eu**<br/>saucelabs-eu: valid API credentials|validation|`saucelabs-eu_1` - saucelabs user<br/>`saucelabs-eu_2` - saucelabs key|
+|**sendgrid**<br/>sendgrid: valid API credentials|validation|`sendgrid_1` - sendgrid key|
+|**slack**<br/>slack: valid API credentials|validation|`slack_1` - slack key|
+|**slack-webhook**<br/>slack-webook: valid API credentials|validation|`slack-webhook_1` - slack webhook|
+|**stripe**<br/>stripe: valid API credentials|validation|`stripe_1` - stripe key|
+|**travisci**<br/>travisci: valid API credentials|validation|`travisci_1` - travisci domain, choose 'org' or 'com'<br/>`travisci_2` - travisci key|
+|**twilio**<br/>twilio: valid API credentials|validation|`twilio_1` - twilio account sid<br/>`twilio_2` - twilio token|
+|**twitter**<br/>twitter: valid API credentials|validation|`twitter_1` - twitter API token|
+|**zendesk**<br/>zendesk: valid API credentials|validation|`zendesk_1` - zendesk domain<br/>`zendesk_2` - zendesk key|
+|**firebase**<br/>firebase: valid API credentials|validation|`firebase_1` - firebase API key<br/>`firebase_2` - firebase ID token|
+|**aws**<br/>aws: valid API credentials|validation|`aws_1` - AWS ID<br/>`aws_2` - AWS secret|
+|**elastic-apm-secret**<br/>Elastic APM: secret key validation|validation|`elastic-apm-secret_1` - Elastic APM host address and port, including 'http/s' part<br/>`elastic-apm-secret_2` - Elastic APM secret|
+|**artifactory**<br/>Artifactory: token validation|validation|`artifactory_1` - Artifactory host (including http(s) part)<br/>`artifactory_2` - Artifactory token|
+|**ibm-cos**<br/>IBM: cloud object storage key validation (HMAC)|validation|`ibm-cos_1` - IBM HMAC ID<br/>`ibm-cos_2` - IBM HMAC secret|
 <!-- /providers -->
+
 
 
 

@@ -673,3 +673,29 @@ providers:
         status_code: "200"
       invalid:
         status_code: "5\\d\\d"
+
+  ibm-cos:
+    validation:
+      request:
+        id: "ibm-cos:validation"
+        desc: "IBM: cloud object storage key validation (HMAC)"
+        params:
+        - name: ibm-cos_1
+          desc: IBM HMAC ID
+        - name: ibm-cos_2
+          desc: IBM HMAC secret
+        uri: https://s3.us.cloud-object-storage.appdomain.cloud
+        method: get
+        aws_auth:
+          key: "{{ibm-cos_1}}"
+          secret: "{{ibm-cos_2}}"
+          service: "s3"
+          region: us-standard
+          endpoint: s3.us.cloud-object-storage.appdomain.cloud
+        headers:
+          host:
+          - s3.us.cloud-object-storage.appdomain.cloud
+      response:
+        status_code: "200"
+      invalid:
+        status_code: "5\\d\\d"
