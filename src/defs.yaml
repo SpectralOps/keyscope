@@ -1,19 +1,20 @@
 providers:
-  hookbin:
+  tester:
     validation:
       request:
         params:
-        - name: hookbin_1
+        - name: tester_1
           desc: hookbin ID (https://hookb.in)
-        - name: hookbin_2
+        - name: tester_2
           desc: fake key to put as a query param
-        id: "postbin:validation"
-        desc: "Postbin: valid key"
-        uri: "https://hookb.in/{{hookbin_1}}?q={{hookbin_2}}"
+        id: "tester:validation"
+        desc: "Tester: valid key"
+        uri: "https://hookb.in/{{tester_1}}?q={{tester_1}}"
         method: post
       response:
         status_code: "200"
-        body: ok
+      invalid:
+        status_code: "5\\d\\d"
       examples:
         ok:
           status_code: "201"
@@ -32,11 +33,8 @@ providers:
         uri: https://api.covalenthq.com/v1/chains/?key={{covalenthq_1}}
       response:
         status_code: "200"
-      examples:
-        ok:
-          status_code: "200"
-        err:
-          status_code: "500"
+      invalid:
+        status_code: "5\\d\\d"
 
   asana:
     validation:
@@ -52,6 +50,8 @@ providers:
           - "Bearer {{asana_1}}"
       response:
         status_code: "200"
+      invalid:
+        status_code: "5\\d\\d"
 
   bitly:
     validation:
@@ -64,6 +64,8 @@ providers:
         uri: https://api-ssl.bitly.com/v3/shorten?access_token={{bitly_1}}&longUrl=https://www.google.com
       response:
         body: "status_code\":200"
+      invalid:
+        status_code: "5\\d\\d"
 
   localytics:
     validation:
@@ -85,6 +87,8 @@ providers:
           - application/vnd.localytics.v1+hal+json
       response:
         status_code: "200"
+      invalid:
+        status_code: "5\\d\\d"
 
   algolia:
     validation:
@@ -107,6 +111,8 @@ providers:
           - "{{algolia_3}}"
       response:
         status_code: "200"
+      invalid:
+        status_code: "5\\d\\d"
 
   branchio:
     validation:
@@ -122,6 +128,8 @@ providers:
         method: get
       response:
         status_code: "200"
+      invalid:
+        status_code: "5\\d\\d"
 
   browserstack:
     validation:
@@ -140,6 +148,8 @@ providers:
           password: "{{browserstack_2}}"
       response:
         status_code: "200"
+      invalid:
+        status_code: "5\\d\\d"
 
   buildkite:
     validation:
@@ -155,6 +165,8 @@ providers:
           - "Bearer {{buildkite_1}}"
       response:
         status_code: "200"
+      invalid:
+        status_code: "5\\d\\d"
 
   datadog:
     validation:
@@ -171,6 +183,8 @@ providers:
           - "{{datadog_1}}"
       response:
         status_code: "200"
+      invalid:
+        status_code: "5\\d\\d"
 
   github:
     validation:
@@ -187,6 +201,8 @@ providers:
           - token {{github_1}}
       response:
         status_code: "200"
+      invalid:
+        status_code: "5\\d\\d"
 
   dropbox:
     validation:
@@ -203,6 +219,8 @@ providers:
           - Bearer {{dropbox_1}}
       response:
         status_code: "200"
+      invalid:
+        status_code: "5\\d\\d"
 
   gitlab:
     validation:
@@ -219,6 +237,8 @@ providers:
           - Bearer {{gitlab_1}}
       response:
         status_code: "200"
+      invalid:
+        status_code: "5\\d\\d"
 
 
   heroku:
@@ -238,6 +258,8 @@ providers:
           - Bearer {{heroku_1}}
       response:
         status_code: "200"
+      invalid:
+        status_code: "5\\d\\d"
 
   mailchimp:
     validation:
@@ -256,6 +278,8 @@ providers:
           password: "{{mailchimp_2}}"
       response:
         status_code: "200"
+      invalid:
+        status_code: "5\\d\\d"
 
   mailgun:
     validation:
@@ -272,6 +296,8 @@ providers:
           password: "{{mailgun_1}}"
       response:
         status_code: "200"
+      invalid:
+        status_code: "5\\d\\d"
 
 
   pagerduty:
@@ -291,6 +317,8 @@ providers:
           - Token token={{pagerduty_1}}
       response:
         status_code: "200"
+      invalid:
+        status_code: "5\\d\\d"
 
 
   circleci:
@@ -308,6 +336,8 @@ providers:
           - "{{circleci_1}}"
       response:
         status_code: "200"
+      invalid:
+        status_code: "5\\d\\d"
 
   facebook-access-token:
     validation:
@@ -321,6 +351,8 @@ providers:
         method: get
       response:
         status_code: "200"
+      invalid:
+        status_code: "5\\d\\d"
 
   salesforce:
     validation:
@@ -339,6 +371,8 @@ providers:
           - Bearer {{salesforce_2}}
       response:
         status_code: "200"
+      invalid:
+        status_code: "5\\d\\d"
 
   jumpcloud:
     validation:
@@ -355,6 +389,8 @@ providers:
           - "{{jumpcloud_1}}"
       response:
         status_code: "200"
+      invalid:
+        status_code: "5\\d\\d"
 
 
   saucelabs-us:
@@ -374,6 +410,8 @@ providers:
           password: "{{saucelabs-us_2}}"
       response:
         status_code: "200"
+      invalid:
+        status_code: "5\\d\\d"
 
   saucelabs-eu:
     validation:
@@ -392,6 +430,8 @@ providers:
           password: "{{saucelabs-eu_2}}"
       response:
         status_code: "200"
+      invalid:
+        status_code: "5\\d\\d"
 
 
   sendgrid:
@@ -411,6 +451,8 @@ providers:
           - Bearer {{sendgrid_1}}
       response:
         status_code: "200"
+      invalid:
+        status_code: "5\\d\\d"
 
   slack:
     validation:
@@ -428,6 +470,9 @@ providers:
       response:
         # negative lookahead as a negated match
         body: "^((?!invalid_auth).)*$"
+      invalid:
+        status_code: "5\\d\\d"
+
   slack-webhook:
     validation:
       request:
@@ -444,6 +489,8 @@ providers:
         body: "{\"text\": \"\"}"
       response:
         body: (missing_text_or_fallback_or_attachments|no_text)
+      invalid:
+        status_code: "5\\d\\d"
 
 
   stripe:
@@ -460,6 +507,8 @@ providers:
           user: "{{stripe_1}}"
       response:
         status_code: "200"
+      invalid:
+        status_code: "5\\d\\d"
 
   travisci:
     validation:
@@ -480,6 +529,8 @@ providers:
           - token {{travisci_2}}
       response:
         status_code: "200"
+      invalid:
+        status_code: "5\\d\\d"
 
   twilio:
     validation:
@@ -498,6 +549,8 @@ providers:
           password: "{{twilio_2}}"
       response:
         status_code: "200"
+      invalid:
+        status_code: "5\\d\\d"
 
   twitter:
     validation:
@@ -514,6 +567,8 @@ providers:
           - Bearer {{twitter_1}}
       response:
         status_code: "200"
+      invalid:
+        status_code: "5\\d\\d"
 
   zendesk:
     validation:
@@ -532,6 +587,8 @@ providers:
           - Bearer {{zendesk_2}}
       response:
         status_code: "200"
+      invalid:
+        status_code: "5\\d\\d"
 
   firebase:
     validation:
@@ -551,6 +608,8 @@ providers:
         body: "{\"idToken\": \"{{firebase_2}}\"}"
       response:
         status_code: "200"
+      invalid:
+        status_code: "5\\d\\d"
 
   aws:
     validation:
@@ -574,4 +633,25 @@ providers:
         body: "Action=GetCallerIdentity&Version=2011-06-15"
       response:
         status_code: "200"
+      invalid:
+        status_code: "5\\d\\d"
+
+  elastic-apm-secret:
+    validation:
+      request:
+        id: "elastic-apm-secret:validation"
+        desc: "Elastic APM: secret key validation"
+        params:
+        - name: elastic-apm-secret_1
+          desc: Elastic APM host address and port, including 'http/s' part
+        - name: elastic-apm-secret_2
+          desc: Elastic APM secret
+        uri: "{{elastic-apm-secret_1}}/config/v1/agents?service.name=test"
+        headers:
+          Authorization: 
+          - "Bearer {{elastic-apm-secret_2}}"
+      response:
+        status_code: "200"
+      invalid:
+        status_code: "5\\d\\d"
 

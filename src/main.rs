@@ -207,6 +207,11 @@ fn validate_command(matches: &ArgMatches, cmd_matches: &ArgMatches) -> AnyResult
             params.iter().for_each(|p| {
                 println!(" - param: {}\n   desc: {}", p.name, p.desc);
             });
+
+            println!(
+                "\nTo use from the CLI, run:\n\n\tkeyscope validate {} -p PARAM1 PARAM2 ...",
+                provider
+            );
         } else {
             println!("provider {} has no requirements.", provider);
         }
@@ -224,7 +229,7 @@ fn validate_command(matches: &ArgMatches, cmd_matches: &ArgMatches) -> AnyResult
                     .map(|(i, s)| (format!("{}_{}", provider, i + 1), s.to_string()))
                     .collect::<Vec<_>>()
             })
-            .ok_or_else(|| anyhow!("missing params parameter"))?;
+            .ok_or_else(|| anyhow!("missing params. please run with the --requirements flag"))?;
         let mut context = Context::new();
 
         params.into_iter().for_each(|(k, v)| {
