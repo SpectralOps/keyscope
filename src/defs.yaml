@@ -655,3 +655,19 @@ providers:
       invalid:
         status_code: "5\\d\\d"
 
+  elastic-apm-secret:
+    validation:
+      request:
+        id: "elastic-apm-secret:validation"
+        desc: "Elastic APM: secret key validation"
+        params:
+        - name: elastic-apm-secret_1
+          desc: Elastic APM host address and port, including 'http/s' part
+        - name: elastic-apm-secret_2
+          desc: Elastic APM secret
+        uri: "{{elastic-apm-secret_1}}/config/v1/agents?service.name=test"
+        headers:
+          Authorization: 
+          - "Bearer {{elastic-apm-secret_2}}"
+      response:
+        status_code: "200"
