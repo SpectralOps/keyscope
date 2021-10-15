@@ -6,7 +6,7 @@ const defs = YAML.parse(file)
 
 
 const rows = L.map(defs.providers, (def, provider)=>{
-	return [provider,  def.validation.request.desc, 'validation', def.validation.request.params.map(p=> `\`${p.name}\` - ${p.desc}`).join("<br/>")]
+	return [provider,  def.validation.request.desc, 'validation', def.validation.request.params.map(p=> `\`${p.name}\` - ${p.desc}`).join("<br/>") + "<br/><br/>```"+ `keyscope validate ${provider} -p ${def.validation.request.params.map(p=> p.name.toUpperCase()).join(" ") }` +"```"]
 })
 
 const header = `| provider | actions | params |\n|---|---|---|\n`
