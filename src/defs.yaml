@@ -699,3 +699,22 @@ providers:
         status_code: "200"
       invalid:
         status_code: "5\\d\\d"
+
+
+  ibm-iam:
+    validation:
+      request:
+        id: "ibm-iam:validation"
+        desc: "IBM: cloud key validation (IAM)"
+        params:
+        - name: ibm-iam_1
+          desc: IBM cloud key
+        uri: https://iam.cloud.ibm.com/identity/introspect
+        method: post
+        form:
+          apikey: "{{ibm-iam_1}}"
+      response:
+        status_code: "200"
+        body: "\"active\":\\s*true"
+      invalid:
+        status_code: "5\\d\\d"
