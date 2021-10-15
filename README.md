@@ -221,6 +221,7 @@ We use our [`service_policy_kit`](https://github.com/spectralops/service-policy-
 |**buildkite**<br/>Buildkite: valid token|validation|`buildkite_1` - buildkite token|
 |**datadog**<br/>datadog: valid API credentials|validation|`datadog_1` - datadog API key|
 |**github**<br/>github: valid API credentials|validation|`github_1` - github token|
+|**github-ent**<br/>Github Enterprise: valid API token|validation|`github-ent_1` - github enterprise instance (without http)<br/>`github-ent_2` - github token|
 |**dropbox**<br/>dropbox: valid API credentials|validation|`dropbox_1` - dropbox token|
 |**gitlab**<br/>gitlab: valid API credentials|validation|`gitlab_1` - gitlab token|
 |**heroku**<br/>heroku: valid API credentials|validation|`heroku_1` - heroku token|
@@ -246,7 +247,12 @@ We use our [`service_policy_kit`](https://github.com/spectralops/service-policy-
 |**elastic-apm-secret**<br/>Elastic APM: secret key validation|validation|`elastic-apm-secret_1` - Elastic APM host address and port, including 'http/s' part<br/>`elastic-apm-secret_2` - Elastic APM secret|
 |**artifactory**<br/>Artifactory: token validation|validation|`artifactory_1` - Artifactory host (including http(s) part)<br/>`artifactory_2` - Artifactory token|
 |**ibm-cos**<br/>IBM: cloud object storage key validation (HMAC)|validation|`ibm-cos_1` - IBM HMAC ID<br/>`ibm-cos_2` - IBM HMAC secret|
+|**ibm-iam**<br/>IBM: cloud key validation (IAM)|validation|`ibm-iam_1` - IBM cloud key|
+|**ibm-cloudant**<br/>IBM: cloudant key validation (legacy)|validation|`ibm-cloudant_1` - IBM cloudant hostname<br/>`ibm-cloudant_2` - IBM cloudant user<br/>`ibm-cloudant_3` - IBM cloudant key|
+|**softlayer**<br/>Softlayer: validate credentials|validation|`softlayer_1` - Softlayer hostname<br/>`softlayer_2` - Softlayer token|
+|**square**<br/>Square: valid token|validation|`square_1` - Square token|
 <!-- /providers -->
+
 
 
 
