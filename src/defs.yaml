@@ -718,3 +718,25 @@ providers:
         body: "\"active\":\\s*true"
       invalid:
         status_code: "5\\d\\d"
+
+  ibm-cloudant:
+    validation:
+      request:
+        id: "ibm-cloudant:validation"
+        desc: "IBM: cloudant key validation (legacy)"
+        params:
+        - name: ibm-cloudant_1
+          desc: IBM cloudant hostname
+        - name: ibm-cloudant_2
+          desc: IBM cloudant user
+        - name: ibm-cloudant_3
+          desc: IBM cloudant key
+        uri: https://{{ibm-cloudant_1}}.cloudantnosqldb.appdomain.cloud
+        method: get
+        basic_auth:
+          user: "{{ibm-cloudant_2}}"
+          password: "{{ibm-cloudant_3}}"
+      response:
+        status_code: "200"
+      invalid:
+        status_code: "5\\d\\d"

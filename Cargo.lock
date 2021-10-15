@@ -1530,7 +1530,9 @@ dependencies = [
 
 [[package]]
 name = "service_policy_kit"
-version = "0.5.0"
+version = "0.6.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "eec1de0e8445f4d42b79af3e21022c976318ff73f71f76e6eb1bf61563e33aea"
 dependencies = [
  "anyhow",
  "atty",
