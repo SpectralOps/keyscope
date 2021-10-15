@@ -9,4 +9,5 @@
 * Added Softlayer
 * Added Elastic Cloud
 * Added Github Enterprise
+* Added Square
 * Updated to latest service-policy-kit, supporting invalid responses

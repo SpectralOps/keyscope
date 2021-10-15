@@ -783,3 +783,20 @@ providers:
         status_code: "200"
       invalid:
         status_code: "5\\d\\d"
+
+  square:
+    validation:
+      request:
+        id: "square:validation"
+        desc: "Square: valid token"
+        params:
+        - name: square_1
+          desc: Square token
+        uri: https://connect.squareup.com/v2/customers
+        headers:
+          Authorization: 
+          - "Bearer {{square_1}}"
+      response:
+        status_code: "200"
+      invalid:
+        status_code: "5\\d\\d"
