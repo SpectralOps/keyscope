@@ -6,5 +6,7 @@
 * Added IBM IAM
 * Added IBM Cloudant (legacy)
 * Added Artifactory (JFrog)
+* Added Softlayer
 * Added Elastic Cloud
+* Added Github Enterprise
 * Updated to latest service-policy-kit, supporting invalid responses

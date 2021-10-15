@@ -204,6 +204,26 @@ providers:
       invalid:
         status_code: "5\\d\\d"
 
+  github-ent:
+    validation:
+      request:
+        id: "github-ent:validation"
+        desc: "Github Enterprise: valid API token"
+        params:
+        - name: github-ent_1
+          desc: github enterprise instance (without http)
+        - name: github-ent_2
+          desc: github token
+        uri: https://{{github-ent_1}}/api/v3
+        method: get
+        headers:
+          Authorization:
+          - token {{github-ent_2}}
+      response:
+        status_code: "200"
+      invalid:
+        status_code: "5\\d\\d"
+
   dropbox:
     validation:
       request:
@@ -736,6 +756,29 @@ providers:
         basic_auth:
           user: "{{ibm-cloudant_2}}"
           password: "{{ibm-cloudant_3}}"
+      response:
+        status_code: "200"
+      invalid:
+        status_code: "5\\d\\d"
+
+  softlayer:
+    validation:
+      request:
+        id: "softlayer:validation"
+        desc: "Softlayer: validate credentials"
+        params:
+        - name: softlayer_1
+          desc: Softlayer hostname
+        - name: softlayer_2
+          desc: Softlayer token
+        uri: https://api.softlayer.com/rest/v3/SoftLayer_Account.json
+        method: get
+        basic_auth:
+          user: "{{softlayer_1}}"
+          password: "{{softlayer_2}}"
+        headers:
+          Content-Type:
+          - application/json
       response:
         status_code: "200"
       invalid:
