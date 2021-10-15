@@ -208,50 +208,965 @@ We use our [`service_policy_kit`](https://github.com/spectralops/service-policy-
 
 
 <!-- providers -->
-| provider | actions | params |
-|---|---|---|
-|**tester**<br/>Tester: valid key|validation|`tester_1` - hookbin ID (https://hookb.in)<br/>`tester_2` - fake key to put as a query param<br/><br/>```keyscope validate tester -p TESTER_1 TESTER_2```|
-|**covalenthq**<br/>Covalent: valid key|validation|`covalenthq_1` - covalent token<br/><br/>```keyscope validate covalenthq -p COVALENTHQ_1```|
-|**asana**<br/>Asana: valid token|validation|`asana_1` - asana token<br/><br/>```keyscope validate asana -p ASANA_1```|
-|**bitly**<br/>Bit.ly: valid access token|validation|`bitly_1` - bit.ly token<br/><br/>```keyscope validate bitly -p BITLY_1```|
-|**localytics**<br/>Localytics: valid API credentials|validation|`localytics_1` - localytics user<br/>`localytics_2` - localytics key<br/><br/>```keyscope validate localytics -p LOCALYTICS_1 LOCALYTICS_2```|
-|**algolia**<br/>Algolia: valid API credentials|validation|`algolia_1` - algolia application ID<br/>`algolia_2` - algolia index<br/>`algolia_3` - algolia API key<br/><br/>```keyscope validate algolia -p ALGOLIA_1 ALGOLIA_2 ALGOLIA_3```|
-|**branchio**<br/>branch.io: valid API credentials|validation|`branchio_1` - branch.io key<br/>`branchio_2` - branch.io secret<br/><br/>```keyscope validate branchio -p BRANCHIO_1 BRANCHIO_2```|
-|**browserstack**<br/>browserstack: valid API credentials|validation|`browserstack_1` - browserstack key<br/>`browserstack_2` - browserstack secret<br/><br/>```keyscope validate browserstack -p BROWSERSTACK_1 BROWSERSTACK_2```|
-|**buildkite**<br/>Buildkite: valid token|validation|`buildkite_1` - buildkite token<br/><br/>```keyscope validate buildkite -p BUILDKITE_1```|
-|**datadog**<br/>datadog: valid API credentials|validation|`datadog_1` - datadog API key<br/><br/>```keyscope validate datadog -p DATADOG_1```|
-|**github**<br/>github: valid API credentials|validation|`github_1` - github token<br/><br/>```keyscope validate github -p GITHUB_1```|
-|**github-ent**<br/>Github Enterprise: valid API token|validation|`github-ent_1` - github enterprise instance (without http)<br/>`github-ent_2` - github token<br/><br/>```keyscope validate github-ent -p GITHUB-ENT_1 GITHUB-ENT_2```|
-|**dropbox**<br/>dropbox: valid API credentials|validation|`dropbox_1` - dropbox token<br/><br/>```keyscope validate dropbox -p DROPBOX_1```|
-|**gitlab**<br/>gitlab: valid API credentials|validation|`gitlab_1` - gitlab token<br/><br/>```keyscope validate gitlab -p GITLAB_1```|
-|**heroku**<br/>heroku: valid API credentials|validation|`heroku_1` - heroku token<br/><br/>```keyscope validate heroku -p HEROKU_1```|
-|**mailchimp**<br/>mailchimp: valid API credentials|validation|`mailchimp_1` - mailchimp datacenter ID<br/>`mailchimp_2` - mailchimp key<br/><br/>```keyscope validate mailchimp -p MAILCHIMP_1 MAILCHIMP_2```|
-|**mailgun**<br/>mailgun: valid API credentials|validation|`mailgun_1` - mailgun key<br/><br/>```keyscope validate mailgun -p MAILGUN_1```|
-|**pagerduty**<br/>pagerduty: valid API credentials|validation|`pagerduty_1` - pagerduty token<br/><br/>```keyscope validate pagerduty -p PAGERDUTY_1```|
-|**circleci**<br/>circleci: valid API credentials|validation|`circleci_1` - circleci key<br/><br/>```keyscope validate circleci -p CIRCLECI_1```|
-|**facebook-access-token**<br/>facebook: valid API token|validation|`facebook-access-token_1` - facebook token<br/><br/>```keyscope validate facebook-access-token -p FACEBOOK-ACCESS-TOKEN_1```|
-|**salesforce**<br/>salesforce: valid API credentials|validation|`salesforce_1` - salesforce instance name<br/>`salesforce_2` - salesforce token<br/><br/>```keyscope validate salesforce -p SALESFORCE_1 SALESFORCE_2```|
-|**jumpcloud**<br/>jumpcloud: valid API credentials|validation|`jumpcloud_1` - jumpcloud key<br/><br/>```keyscope validate jumpcloud -p JUMPCLOUD_1```|
-|**saucelabs-us**<br/>saucelabs-us: valid API credentials|validation|`saucelabs-us_1` - saucelabs user<br/>`saucelabs-us_2` - saucelabs key<br/><br/>```keyscope validate saucelabs-us -p SAUCELABS-US_1 SAUCELABS-US_2```|
-|**saucelabs-eu**<br/>saucelabs-eu: valid API credentials|validation|`saucelabs-eu_1` - saucelabs user<br/>`saucelabs-eu_2` - saucelabs key<br/><br/>```keyscope validate saucelabs-eu -p SAUCELABS-EU_1 SAUCELABS-EU_2```|
-|**sendgrid**<br/>sendgrid: valid API credentials|validation|`sendgrid_1` - sendgrid key<br/><br/>```keyscope validate sendgrid -p SENDGRID_1```|
-|**slack**<br/>slack: valid API credentials|validation|`slack_1` - slack key<br/><br/>```keyscope validate slack -p SLACK_1```|
-|**slack-webhook**<br/>slack-webook: valid API credentials|validation|`slack-webhook_1` - slack webhook<br/><br/>```keyscope validate slack-webhook -p SLACK-WEBHOOK_1```|
-|**stripe**<br/>stripe: valid API credentials|validation|`stripe_1` - stripe key<br/><br/>```keyscope validate stripe -p STRIPE_1```|
-|**travisci**<br/>travisci: valid API credentials|validation|`travisci_1` - travisci domain, choose 'org' or 'com'<br/>`travisci_2` - travisci key<br/><br/>```keyscope validate travisci -p TRAVISCI_1 TRAVISCI_2```|
-|**twilio**<br/>twilio: valid API credentials|validation|`twilio_1` - twilio account sid<br/>`twilio_2` - twilio token<br/><br/>```keyscope validate twilio -p TWILIO_1 TWILIO_2```|
-|**twitter**<br/>twitter: valid API credentials|validation|`twitter_1` - twitter API token<br/><br/>```keyscope validate twitter -p TWITTER_1```|
-|**zendesk**<br/>zendesk: valid API credentials|validation|`zendesk_1` - zendesk domain<br/>`zendesk_2` - zendesk key<br/><br/>```keyscope validate zendesk -p ZENDESK_1 ZENDESK_2```|
-|**firebase**<br/>firebase: valid API credentials|validation|`firebase_1` - firebase API key<br/>`firebase_2` - firebase ID token<br/><br/>```keyscope validate firebase -p FIREBASE_1 FIREBASE_2```|
-|**aws**<br/>aws: valid API credentials|validation|`aws_1` - AWS ID<br/>`aws_2` - AWS secret<br/><br/>```keyscope validate aws -p AWS_1 AWS_2```|
-|**elastic-apm-secret**<br/>Elastic APM: secret key validation|validation|`elastic-apm-secret_1` - Elastic APM host address and port, including 'http/s' part<br/>`elastic-apm-secret_2` - Elastic APM secret<br/><br/>```keyscope validate elastic-apm-secret -p ELASTIC-APM-SECRET_1 ELASTIC-APM-SECRET_2```|
-|**artifactory**<br/>Artifactory: token validation|validation|`artifactory_1` - Artifactory host (including http(s) part)<br/>`artifactory_2` - Artifactory token<br/><br/>```keyscope validate artifactory -p ARTIFACTORY_1 ARTIFACTORY_2```|
-|**ibm-cos**<br/>IBM: cloud object storage key validation (HMAC)|validation|`ibm-cos_1` - IBM HMAC ID<br/>`ibm-cos_2` - IBM HMAC secret<br/><br/>```keyscope validate ibm-cos -p IBM-COS_1 IBM-COS_2```|
-|**ibm-iam**<br/>IBM: cloud key validation (IAM)|validation|`ibm-iam_1` - IBM cloud key<br/><br/>```keyscope validate ibm-iam -p IBM-IAM_1```|
-|**ibm-cloudant**<br/>IBM: cloudant key validation (legacy)|validation|`ibm-cloudant_1` - IBM cloudant hostname<br/>`ibm-cloudant_2` - IBM cloudant user<br/>`ibm-cloudant_3` - IBM cloudant key<br/><br/>```keyscope validate ibm-cloudant -p IBM-CLOUDANT_1 IBM-CLOUDANT_2 IBM-CLOUDANT_3```|
-|**softlayer**<br/>Softlayer: validate credentials|validation|`softlayer_1` - Softlayer hostname<br/>`softlayer_2` - Softlayer token<br/><br/>```keyscope validate softlayer -p SOFTLAYER_1 SOFTLAYER_2```|
-|**square**<br/>Square: valid token|validation|`square_1` - Square token<br/><br/>```keyscope validate square -p SQUARE_1```|
+<table>
+<tr><td>
+
+**tester**<br/>Tester: valid key
+
+</td>
+<td>
+
+validation
+
+</td>
+<td>
+
+`tester_1` - hookbin ID (https://hookb.in)<br/>`tester_2` - fake key to put as a query param
+
+</td>
+</tr>
+<tr>
+<td colspan="3">
+
+```
+keyscope validate tester -p TESTER_1 TESTER_2
+```
+</td></tr>
+<tr><td>
+
+**covalenthq**<br/>Covalent: valid key
+
+</td>
+<td>
+
+validation
+
+</td>
+<td>
+
+`covalenthq_1` - covalent token
+
+</td>
+</tr>
+<tr>
+<td colspan="3">
+
+```
+keyscope validate covalenthq -p COVALENTHQ_1
+```
+</td></tr>
+<tr><td>
+
+**asana**<br/>Asana: valid token
+
+</td>
+<td>
+
+validation
+
+</td>
+<td>
+
+`asana_1` - asana token
+
+</td>
+</tr>
+<tr>
+<td colspan="3">
+
+```
+keyscope validate asana -p ASANA_1
+```
+</td></tr>
+<tr><td>
+
+**bitly**<br/>Bit.ly: valid access token
+
+</td>
+<td>
+
+validation
+
+</td>
+<td>
+
+`bitly_1` - bit.ly token
+
+</td>
+</tr>
+<tr>
+<td colspan="3">
+
+```
+keyscope validate bitly -p BITLY_1
+```
+</td></tr>
+<tr><td>
+
+**localytics**<br/>Localytics: valid API credentials
+
+</td>
+<td>
+
+validation
+
+</td>
+<td>
+
+`localytics_1` - localytics user<br/>`localytics_2` - localytics key
+
+</td>
+</tr>
+<tr>
+<td colspan="3">
+
+```
+keyscope validate localytics -p LOCALYTICS_1 LOCALYTICS_2
+```
+</td></tr>
+<tr><td>
+
+**algolia**<br/>Algolia: valid API credentials
+
+</td>
+<td>
+
+validation
+
+</td>
+<td>
+
+`algolia_1` - algolia application ID<br/>`algolia_2` - algolia index<br/>`algolia_3` - algolia API key
+
+</td>
+</tr>
+<tr>
+<td colspan="3">
+
+```
+keyscope validate algolia -p ALGOLIA_1 ALGOLIA_2 ALGOLIA_3
+```
+</td></tr>
+<tr><td>
+
+**branchio**<br/>branch.io: valid API credentials
+
+</td>
+<td>
+
+validation
+
+</td>
+<td>
+
+`branchio_1` - branch.io key<br/>`branchio_2` - branch.io secret
+
+</td>
+</tr>
+<tr>
+<td colspan="3">
+
+```
+keyscope validate branchio -p BRANCHIO_1 BRANCHIO_2
+```
+</td></tr>
+<tr><td>
+
+**browserstack**<br/>browserstack: valid API credentials
+
+</td>
+<td>
+
+validation
+
+</td>
+<td>
+
+`browserstack_1` - browserstack key<br/>`browserstack_2` - browserstack secret
+
+</td>
+</tr>
+<tr>
+<td colspan="3">
+
+```
+keyscope validate browserstack -p BROWSERSTACK_1 BROWSERSTACK_2
+```
+</td></tr>
+<tr><td>
+
+**buildkite**<br/>Buildkite: valid token
+
+</td>
+<td>
+
+validation
+
+</td>
+<td>
+
+`buildkite_1` - buildkite token
+
+</td>
+</tr>
+<tr>
+<td colspan="3">
+
+```
+keyscope validate buildkite -p BUILDKITE_1
+```
+</td></tr>
+<tr><td>
+
+**datadog**<br/>datadog: valid API credentials
+
+</td>
+<td>
+
+validation
+
+</td>
+<td>
+
+`datadog_1` - datadog API key
+
+</td>
+</tr>
+<tr>
+<td colspan="3">
+
+```
+keyscope validate datadog -p DATADOG_1
+```
+</td></tr>
+<tr><td>
+
+**github**<br/>github: valid API credentials
+
+</td>
+<td>
+
+validation
+
+</td>
+<td>
+
+`github_1` - github token
+
+</td>
+</tr>
+<tr>
+<td colspan="3">
+
+```
+keyscope validate github -p GITHUB_1
+```
+</td></tr>
+<tr><td>
+
+**github-ent**<br/>Github Enterprise: valid API token
+
+</td>
+<td>
+
+validation
+
+</td>
+<td>
+
+`github-ent_1` - github enterprise instance (without http)<br/>`github-ent_2` - github token
+
+</td>
+</tr>
+<tr>
+<td colspan="3">
+
+```
+keyscope validate github-ent -p GITHUB-ENT_1 GITHUB-ENT_2
+```
+</td></tr>
+<tr><td>
+
+**dropbox**<br/>dropbox: valid API credentials
+
+</td>
+<td>
+
+validation
+
+</td>
+<td>
+
+`dropbox_1` - dropbox token
+
+</td>
+</tr>
+<tr>
+<td colspan="3">
+
+```
+keyscope validate dropbox -p DROPBOX_1
+```
+</td></tr>
+<tr><td>
+
+**gitlab**<br/>gitlab: valid API credentials
+
+</td>
+<td>
+
+validation
+
+</td>
+<td>
+
+`gitlab_1` - gitlab token
+
+</td>
+</tr>
+<tr>
+<td colspan="3">
+
+```
+keyscope validate gitlab -p GITLAB_1
+```
+</td></tr>
+<tr><td>
+
+**heroku**<br/>heroku: valid API credentials
+
+</td>
+<td>
+
+validation
+
+</td>
+<td>
+
+`heroku_1` - heroku token
+
+</td>
+</tr>
+<tr>
+<td colspan="3">
+
+```
+keyscope validate heroku -p HEROKU_1
+```
+</td></tr>
+<tr><td>
+
+**mailchimp**<br/>mailchimp: valid API credentials
+
+</td>
+<td>
+
+validation
+
+</td>
+<td>
+
+`mailchimp_1` - mailchimp datacenter ID<br/>`mailchimp_2` - mailchimp key
+
+</td>
+</tr>
+<tr>
+<td colspan="3">
+
+```
+keyscope validate mailchimp -p MAILCHIMP_1 MAILCHIMP_2
+```
+</td></tr>
+<tr><td>
+
+**mailgun**<br/>mailgun: valid API credentials
+
+</td>
+<td>
+
+validation
+
+</td>
+<td>
+
+`mailgun_1` - mailgun key
+
+</td>
+</tr>
+<tr>
+<td colspan="3">
+
+```
+keyscope validate mailgun -p MAILGUN_1
+```
+</td></tr>
+<tr><td>
+
+**pagerduty**<br/>pagerduty: valid API credentials
+
+</td>
+<td>
+
+validation
+
+</td>
+<td>
+
+`pagerduty_1` - pagerduty token
+
+</td>
+</tr>
+<tr>
+<td colspan="3">
+
+```
+keyscope validate pagerduty -p PAGERDUTY_1
+```
+</td></tr>
+<tr><td>
+
+**circleci**<br/>circleci: valid API credentials
+
+</td>
+<td>
+
+validation
+
+</td>
+<td>
+
+`circleci_1` - circleci key
+
+</td>
+</tr>
+<tr>
+<td colspan="3">
+
+```
+keyscope validate circleci -p CIRCLECI_1
+```
+</td></tr>
+<tr><td>
+
+**facebook-access-token**<br/>facebook: valid API token
+
+</td>
+<td>
+
+validation
+
+</td>
+<td>
+
+`facebook-access-token_1` - facebook token
+
+</td>
+</tr>
+<tr>
+<td colspan="3">
+
+```
+keyscope validate facebook-access-token -p FACEBOOK-ACCESS-TOKEN_1
+```
+</td></tr>
+<tr><td>
+
+**salesforce**<br/>salesforce: valid API credentials
+
+</td>
+<td>
+
+validation
+
+</td>
+<td>
+
+`salesforce_1` - salesforce instance name<br/>`salesforce_2` - salesforce token
+
+</td>
+</tr>
+<tr>
+<td colspan="3">
+
+```
+keyscope validate salesforce -p SALESFORCE_1 SALESFORCE_2
+```
+</td></tr>
+<tr><td>
+
+**jumpcloud**<br/>jumpcloud: valid API credentials
+
+</td>
+<td>
+
+validation
+
+</td>
+<td>
+
+`jumpcloud_1` - jumpcloud key
+
+</td>
+</tr>
+<tr>
+<td colspan="3">
+
+```
+keyscope validate jumpcloud -p JUMPCLOUD_1
+```
+</td></tr>
+<tr><td>
+
+**saucelabs-us**<br/>saucelabs-us: valid API credentials
+
+</td>
+<td>
+
+validation
+
+</td>
+<td>
+
+`saucelabs-us_1` - saucelabs user<br/>`saucelabs-us_2` - saucelabs key
+
+</td>
+</tr>
+<tr>
+<td colspan="3">
+
+```
+keyscope validate saucelabs-us -p SAUCELABS-US_1 SAUCELABS-US_2
+```
+</td></tr>
+<tr><td>
+
+**saucelabs-eu**<br/>saucelabs-eu: valid API credentials
+
+</td>
+<td>
+
+validation
+
+</td>
+<td>
+
+`saucelabs-eu_1` - saucelabs user<br/>`saucelabs-eu_2` - saucelabs key
+
+</td>
+</tr>
+<tr>
+<td colspan="3">
+
+```
+keyscope validate saucelabs-eu -p SAUCELABS-EU_1 SAUCELABS-EU_2
+```
+</td></tr>
+<tr><td>
+
+**sendgrid**<br/>sendgrid: valid API credentials
+
+</td>
+<td>
+
+validation
+
+</td>
+<td>
+
+`sendgrid_1` - sendgrid key
+
+</td>
+</tr>
+<tr>
+<td colspan="3">
+
+```
+keyscope validate sendgrid -p SENDGRID_1
+```
+</td></tr>
+<tr><td>
+
+**slack**<br/>slack: valid API credentials
+
+</td>
+<td>
+
+validation
+
+</td>
+<td>
+
+`slack_1` - slack key
+
+</td>
+</tr>
+<tr>
+<td colspan="3">
+
+```
+keyscope validate slack -p SLACK_1
+```
+</td></tr>
+<tr><td>
+
+**slack-webhook**<br/>slack-webook: valid API credentials
+
+</td>
+<td>
+
+validation
+
+</td>
+<td>
+
+`slack-webhook_1` - slack webhook
+
+</td>
+</tr>
+<tr>
+<td colspan="3">
+
+```
+keyscope validate slack-webhook -p SLACK-WEBHOOK_1
+```
+</td></tr>
+<tr><td>
+
+**stripe**<br/>stripe: valid API credentials
+
+</td>
+<td>
+
+validation
+
+</td>
+<td>
+
+`stripe_1` - stripe key
+
+</td>
+</tr>
+<tr>
+<td colspan="3">
+
+```
+keyscope validate stripe -p STRIPE_1
+```
+</td></tr>
+<tr><td>
+
+**travisci**<br/>travisci: valid API credentials
+
+</td>
+<td>
+
+validation
+
+</td>
+<td>
+
+`travisci_1` - travisci domain, choose 'org' or 'com'<br/>`travisci_2` - travisci key
+
+</td>
+</tr>
+<tr>
+<td colspan="3">
+
+```
+keyscope validate travisci -p TRAVISCI_1 TRAVISCI_2
+```
+</td></tr>
+<tr><td>
+
+**twilio**<br/>twilio: valid API credentials
+
+</td>
+<td>
+
+validation
+
+</td>
+<td>
+
+`twilio_1` - twilio account sid<br/>`twilio_2` - twilio token
+
+</td>
+</tr>
+<tr>
+<td colspan="3">
+
+```
+keyscope validate twilio -p TWILIO_1 TWILIO_2
+```
+</td></tr>
+<tr><td>
+
+**twitter**<br/>twitter: valid API credentials
+
+</td>
+<td>
+
+validation
+
+</td>
+<td>
+
+`twitter_1` - twitter API token
+
+</td>
+</tr>
+<tr>
+<td colspan="3">
+
+```
+keyscope validate twitter -p TWITTER_1
+```
+</td></tr>
+<tr><td>
+
+**zendesk**<br/>zendesk: valid API credentials
+
+</td>
+<td>
+
+validation
+
+</td>
+<td>
+
+`zendesk_1` - zendesk domain<br/>`zendesk_2` - zendesk key
+
+</td>
+</tr>
+<tr>
+<td colspan="3">
+
+```
+keyscope validate zendesk -p ZENDESK_1 ZENDESK_2
+```
+</td></tr>
+<tr><td>
+
+**firebase**<br/>firebase: valid API credentials
+
+</td>
+<td>
+
+validation
+
+</td>
+<td>
+
+`firebase_1` - firebase API key<br/>`firebase_2` - firebase ID token
+
+</td>
+</tr>
+<tr>
+<td colspan="3">
+
+```
+keyscope validate firebase -p FIREBASE_1 FIREBASE_2
+```
+</td></tr>
+<tr><td>
+
+**aws**<br/>aws: valid API credentials
+
+</td>
+<td>
+
+validation
+
+</td>
+<td>
+
+`aws_1` - AWS ID<br/>`aws_2` - AWS secret
+
+</td>
+</tr>
+<tr>
+<td colspan="3">
+
+```
+keyscope validate aws -p AWS_1 AWS_2
+```
+</td></tr>
+<tr><td>
+
+**elastic-apm-secret**<br/>Elastic APM: secret key validation
+
+</td>
+<td>
+
+validation
+
+</td>
+<td>
+
+`elastic-apm-secret_1` - Elastic APM host address and port, including 'http/s' part<br/>`elastic-apm-secret_2` - Elastic APM secret
+
+</td>
+</tr>
+<tr>
+<td colspan="3">
+
+```
+keyscope validate elastic-apm-secret -p ELASTIC-APM-SECRET_1 ELASTIC-APM-SECRET_2
+```
+</td></tr>
+<tr><td>
+
+**artifactory**<br/>Artifactory: token validation
+
+</td>
+<td>
+
+validation
+
+</td>
+<td>
+
+`artifactory_1` - Artifactory host (including http(s) part)<br/>`artifactory_2` - Artifactory token
+
+</td>
+</tr>
+<tr>
+<td colspan="3">
+
+```
+keyscope validate artifactory -p ARTIFACTORY_1 ARTIFACTORY_2
+```
+</td></tr>
+<tr><td>
+
+**ibm-cos**<br/>IBM: cloud object storage key validation (HMAC)
+
+</td>
+<td>
+
+validation
+
+</td>
+<td>
+
+`ibm-cos_1` - IBM HMAC ID<br/>`ibm-cos_2` - IBM HMAC secret
+
+</td>
+</tr>
+<tr>
+<td colspan="3">
+
+```
+keyscope validate ibm-cos -p IBM-COS_1 IBM-COS_2
+```
+</td></tr>
+<tr><td>
+
+**ibm-iam**<br/>IBM: cloud key validation (IAM)
+
+</td>
+<td>
+
+validation
+
+</td>
+<td>
+
+`ibm-iam_1` - IBM cloud key
+
+</td>
+</tr>
+<tr>
+<td colspan="3">
+
+```
+keyscope validate ibm-iam -p IBM-IAM_1
+```
+</td></tr>
+<tr><td>
+
+**ibm-cloudant**<br/>IBM: cloudant key validation (legacy)
+
+</td>
+<td>
+
+validation
+
+</td>
+<td>
+
+`ibm-cloudant_1` - IBM cloudant hostname<br/>`ibm-cloudant_2` - IBM cloudant user<br/>`ibm-cloudant_3` - IBM cloudant key
+
+</td>
+</tr>
+<tr>
+<td colspan="3">
+
+```
+keyscope validate ibm-cloudant -p IBM-CLOUDANT_1 IBM-CLOUDANT_2 IBM-CLOUDANT_3
+```
+</td></tr>
+<tr><td>
+
+**softlayer**<br/>Softlayer: validate credentials
+
+</td>
+<td>
+
+validation
+
+</td>
+<td>
+
+`softlayer_1` - Softlayer hostname<br/>`softlayer_2` - Softlayer token
+
+</td>
+</tr>
+<tr>
+<td colspan="3">
+
+```
+keyscope validate softlayer -p SOFTLAYER_1 SOFTLAYER_2
+```
+</td></tr>
+<tr><td>
+
+**square**<br/>Square: valid token
+
+</td>
+<td>
+
+validation
+
+</td>
+<td>
+
+`square_1` - Square token
+
+</td>
+</tr>
+<tr>
+<td colspan="3">
+
+```
+keyscope validate square -p SQUARE_1
+```
+</td></tr>
+</table>
 <!-- /providers -->
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
