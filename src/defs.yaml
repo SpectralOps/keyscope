@@ -800,3 +800,18 @@ providers:
         status_code: "200"
       invalid:
         status_code: "5\\d\\d"
+
+  telegram-bot:
+    validation:
+      request:
+        id: "telegram-bot:validation"
+        desc: "telegram-bot: valid bot token"
+        params:
+        - name: telegram-bot_1
+          desc: bot key
+        uri: https://api.telegram.org/bot{{telegram-bot_1}}/getMe
+        method: get
+      response:
+        status_code: "200"
+      invalid:
+        status_code: "5\\d\\d"
