@@ -836,7 +836,7 @@ dependencies = [
 
 [[package]]
 name = "keyscope"
-version = "1.1.0"
+version = "1.2.0"
 dependencies = [
  "anyhow",
  "clap",
@@ -1530,9 +1530,9 @@ dependencies = [
 
 [[package]]
 name = "service_policy_kit"
-version = "0.6.0"
+version = "0.7.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "eec1de0e8445f4d42b79af3e21022c976318ff73f71f76e6eb1bf61563e33aea"
+checksum = "c058359aa118a85c777177d6a69ddeb1f10e8a14199b83498d682a1d18d13d48"
 dependencies = [
  "anyhow",
  "atty",
