@@ -1,6 +1,6 @@
 [package]
 name = "keyscope"
-version = "1.2.0"
+version = "1.2.3"
 edition = "2018"
 build = "build.rs"
 
