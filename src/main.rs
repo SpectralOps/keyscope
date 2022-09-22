@@ -122,7 +122,7 @@ fn main() {
                 exit(if ok { 0 } else { 1 });
             }
             Err(err) => {
-                eprintln!("error: {}", err.to_string());
+                eprintln!("error: {}", err);
             }
         }
     }
