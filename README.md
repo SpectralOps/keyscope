@@ -56,7 +56,7 @@ $ keyscope validate github $GITHUB_TOKEN
 You can see which other providers are supported by running:
 
 ```
-$ keyscope validate --providers
+$ keyscope validate --list
 
   .
   :
