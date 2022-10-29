@@ -63,15 +63,15 @@ $ keyscope validate --list
   .
 
 twilio:validation
-keyscope validate twilio -p p1 p2
+keyscope validate twilio -p twilio_1 twilio_2
 
 twitter:validation
-keyscope validate twitter -p p1
+keyscope validate twitter -p twitter_1
 
 zendesk:validation
-keyscope validate zendesk -p p1 p1
+keyscope validate zendesk -p zendesk_1 zendesk_2
 
-Total 33 providers available.
+Total 42 providers available.
 $
 ```
 
