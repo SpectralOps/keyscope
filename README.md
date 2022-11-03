@@ -303,6 +303,55 @@ keyscope validate bitly -p BITLY_1
 </td></tr>
 <tr><td>
 
+**infura**<br/>Infura: valid api key
+
+</td>
+<td>
+
+validation
+
+</td>
+<td>
+
+`infura_1` - infura api key
+
+</td>
+</tr>
+<tr>
+<td colspan="3">
+
+```
+keyscope validate infura -p INFURA_1
+```
+</td></tr>
+
+<tr><td>
+<tr><td>
+
+**ipstack**<br/>Ipstack: valid access key
+
+</td>
+<td>
+
+validation
+
+</td>
+<td>
+
+`ipstack_1` - ipstack access key
+
+</td>
+</tr>
+<tr>
+<td colspan="3">
+
+```
+keyscope validate ipstack -p IPSTACK_1
+```
+</td></tr>
+
+<tr><td>
+
 **localytics**<br/>Localytics: valid API credentials
 
 </td>
@@ -851,6 +900,29 @@ validation
 
 ```
 keyscope validate stripe -p STRIPE_1
+```
+</td></tr>
+<tr><td>
+
+**telegram-bot**<br/>Telegram-bot: valid telegram bot key
+
+</td>
+<td>
+
+validation
+
+</td>
+<td>
+
+`telegram-bot_1` - bot key
+
+</td>
+</tr>
+<tr>
+<td colspan="3">
+
+```
+keyscope validate telegram-bot -p TELEGRAM-BOT_1
 ```
 </td></tr>
 <tr><td>
