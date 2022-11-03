@@ -22,6 +22,22 @@ providers:
         err:
           status_code: "500"
 
+  infura:
+    validation:
+      request:
+        id: "infura:validation"
+        desc: "infura API key"
+        params:
+        - name: infura_1
+          desc: infura API key
+        uri: https://mainnet.infura.io/v3/{{infura_1}}
+        body: '{"jsonrpc": "2.0", "id": 1, "method": "eth_blockNumber", "params": []}'
+        method: post
+      response:
+        body: "^((?!invalid project id).)*$"
+      invalid:
+        status_code: "5\\d\\d"
+
   covalenthq:
     validation:
       request:
