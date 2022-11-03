@@ -67,6 +67,21 @@ providers:
       invalid:
         status_code: "5\\d\\d"
 
+  ipstack:
+    validation:
+      request:
+        id: "ipstack:validation"
+        desc: "ipstack access key"
+        params:
+        - name: ipstack_1 
+          desc: ipstack access key
+        uri: http://api.ipstack.com/134.201.250.155?access_key={{ipstack_1}}
+        method: get
+      response:
+        body: "^((?!invalid_access_key).)*$"
+      invalid:
+        status_code: "5\\d\\d"
+
   localytics:
     validation:
       request:
