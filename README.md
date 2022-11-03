@@ -71,7 +71,7 @@ keyscope validate twitter -p twitter_1
 zendesk:validation
 keyscope validate zendesk -p zendesk_1 zendesk_2
 
-Total 42 providers available.
+Total 44 providers available.
 $
 ```
 
