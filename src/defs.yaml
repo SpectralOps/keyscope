@@ -22,6 +22,22 @@ providers:
         err:
           status_code: "500"
 
+  infura:
+    validation:
+      request:
+        id: "infura:validation"
+        desc: "infura API key"
+        params:
+        - name: infura_1
+          desc: infura API key
+        uri: https://mainnet.infura.io/v3/{{infura_1}}
+        body: '{"jsonrpc": "2.0", "id": 1, "method": "eth_blockNumber", "params": []}'
+        method: post
+      response:
+        body: "^((?!invalid project id).)*$"
+      invalid:
+        status_code: "5\\d\\d"
+
   covalenthq:
     validation:
       request:
@@ -64,6 +80,21 @@ providers:
         uri: https://api-ssl.bitly.com/v3/shorten?access_token={{bitly_1}}&longUrl=https://www.google.com
       response:
         body: "status_code\":200"
+      invalid:
+        status_code: "5\\d\\d"
+
+  ipstack:
+    validation:
+      request:
+        id: "ipstack:validation"
+        desc: "ipstack access key"
+        params:
+        - name: ipstack_1 
+          desc: ipstack access key
+        uri: http://api.ipstack.com/134.201.250.155?access_key={{ipstack_1}}
+        method: get
+      response:
+        body: "^((?!invalid_access_key).)*$"
       invalid:
         status_code: "5\\d\\d"
 
