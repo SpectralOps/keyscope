@@ -846,3 +846,17 @@ providers:
         status_code: "200"
       invalid:
         status_code: "5\\d\\d"
+
+  bazaarvoice:
+    validation:
+      request:
+        id: "bazaarvoice:validation"
+        desc: "Bazaarvoice: valid key"
+        params:
+        - name: bazaarvoice_1
+          desc: bazaarvoice token
+        uri: https://which-cpv-api.bazaarvoice.com/clientInfo?conversationspasskey={{bazaarvoice_1}}
+      response:
+        status_code: "200"
+      invalid:
+        status_code: "4\\d\\d"
