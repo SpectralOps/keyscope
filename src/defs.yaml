@@ -847,7 +847,6 @@ providers:
       invalid:
         status_code: "5\\d\\d"
 
-
   bingmaps:
     validation:
       request:
@@ -859,5 +858,32 @@ providers:
         uri: https://dev.virtualearth.net/REST/v1/Locations?CountryRegion=US&adminDistrict=WA&locality=Somewhere&postalCode=98001&addressLine=100%20Main%20St.&key={{bingmaps_1}}
       response:
         body: "ValidCredentials"
+
+  buttercms:
+    validation:
+      request:
+        id: "buttercms:validation"
+        desc: "ButterCMS: valid bot token"
+        params:
+        - name: buttercms_1
+          desc: ButterCMS API key
+        uri: https://api.buttercms.com/v2/posts/?auth_token={{buttercms_1}}
+        method: get
+        
+  calendly:
+    validation:
+      request:
+        id: "calendly:validation"
+        desc: "calendly: valid API credentials"
+        params:
+        - name: calendly_1
+          desc: calendly API key
+        uri: https://calendly.com/api/v1/users/me
+        method: get
+        headers:
+          X-TOKEN:
+          - "{{calendly_1}}"
+      response:
+        status_code: "200"
       invalid:
         status_code: "4\\d\\d"
