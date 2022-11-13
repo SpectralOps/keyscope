@@ -846,3 +846,21 @@ providers:
         status_code: "200"
       invalid:
         status_code: "5\\d\\d"
+
+  calendly:
+    validation:
+      request:
+        id: "calendly:validation"
+        desc: "calendly: valid API credentials"
+        params:
+        - name: calendly_1
+          desc: calendly API key
+        uri: https://calendly.com/api/v1/users/me
+        method: get
+        headers:
+          X-TOKEN:
+          - "{{calendly_1}}"
+      response:
+        status_code: "200"
+      invalid:
+        status_code: "4\\d\\d"
