@@ -847,6 +847,17 @@ providers:
       invalid:
         status_code: "5\\d\\d"
 
+  buttercms:
+    validation:
+      request:
+        id: "buttercms:validation"
+        desc: "ButterCMS: valid bot token"
+        params:
+        - name: buttercms_1
+          desc: ButterCMS API key
+        uri: https://api.buttercms.com/v2/posts/?auth_token={{buttercms_1}}
+        method: get
+        
   calendly:
     validation:
       request:
