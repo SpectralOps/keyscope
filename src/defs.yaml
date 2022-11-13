@@ -857,6 +857,20 @@ providers:
           desc: ButterCMS API key
         uri: https://api.buttercms.com/v2/posts/?auth_token={{buttercms_1}}
         method: get
+        
+  calendly:
+    validation:
+      request:
+        id: "calendly:validation"
+        desc: "calendly: valid API credentials"
+        params:
+        - name: calendly_1
+          desc: calendly API key
+        uri: https://calendly.com/api/v1/users/me
+        method: get
+        headers:
+          X-TOKEN:
+          - "{{calendly_1}}"
       response:
         status_code: "200"
       invalid:
