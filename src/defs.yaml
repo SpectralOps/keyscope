@@ -858,6 +858,8 @@ providers:
         uri: https://dev.virtualearth.net/REST/v1/Locations?CountryRegion=US&adminDistrict=WA&locality=Somewhere&postalCode=98001&addressLine=100%20Main%20St.&key={{bingmaps_1}}
       response:
         body: "ValidCredentials"
+      invalid:
+        status_code: "4\\d\\d"
 
   buttercms:
     validation:
@@ -869,7 +871,11 @@ providers:
           desc: ButterCMS API key
         uri: https://api.buttercms.com/v2/posts/?auth_token={{buttercms_1}}
         method: get
-        
+      response:
+        status_code: "200"
+      invalid:
+        status_code: "4\\d\\d"
+
   calendly:
     validation:
       request:
@@ -887,3 +893,39 @@ providers:
         status_code: "200"
       invalid:
         status_code: "4\\d\\d"
+
+  shodan:
+    validation:
+      request:
+        id: "shodan:validation"
+        desc: "shodan: valid api token"
+        params:
+        - name: shodan_1
+          desc: Shodan API key
+        uri: https://api.shodan.io/shodan/host/8.8.8.8?key={{shodan_1}}
+        method: get
+      response:
+        status_code: "200"
+      invalid:
+        status_code: "4\\d\\d"
+
+  pendo:
+    validation:
+      request:
+        id: "pendo:validation"
+        desc: "pendo: valid api token"
+        params:
+        - name: pendo_1
+          desc: pendo API key
+        uri: https://app.pendo.io/api/v1/feature
+        method: get
+        headers:
+          Content-Type:
+          - application/json
+          x-pendo-integration-key:
+          - "{{pendo_1}}"
+      response:
+        status_code: "200"
+      invalid:
+        status_code: "4\\d\\d"
+
