@@ -908,3 +908,24 @@ providers:
         status_code: "200"
       invalid:
         status_code: "4\\d\\d"
+
+  pendo:
+    validation:
+      request:
+        id: "pendo:validation"
+        desc: "pendo: valid api token"
+        params:
+        - name: pendo_1
+          desc: pendo API key
+        uri: https://app.pendo.io/api/v1/feature
+        method: get
+        headers:
+          Content-Type:
+          - application/json
+          x-pendo-integration-key:
+          - "{{pendo_1}}"
+      response:
+        status_code: "200"
+      invalid:
+        status_code: "4\\d\\d"
+
