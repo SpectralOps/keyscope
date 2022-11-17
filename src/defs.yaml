@@ -876,6 +876,21 @@ providers:
       invalid:
         status_code: "4\\d\\d"
 
+  wakatime:
+    validation:
+      request:
+        id: "wakatime:validation"
+        desc: "wakatime: valid api token"
+        params:
+        - name: wakatime_1
+          desc: WakeTime API key
+        uri: https://wakatime.com/api/v1/users/current/projects/?api_key={{wakatime_1}}
+        method: get
+      response:
+        status_code: "200"
+      invalid:
+        status_code: "4\\d\\d"
+
   calendly:
     validation:
       request:
