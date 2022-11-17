@@ -962,3 +962,17 @@ providers:
       invalid:
         status_code: "4\\d\\d"
 
+  hubspot:
+    validation:
+      request:
+        id: "hubspot:validation"
+        desc: "hubspot: valid api token"
+        params:
+        - name: hubspot_1
+          desc: hubspot API key
+        uri: https://api.hubapi.com/owners/v2/owners?hapikey={{hubspot_1}}
+        method: get
+      response:
+        status_code: "200"
+      invalid:
+        status_code: "4\\d\\d"
