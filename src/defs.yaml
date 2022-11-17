@@ -924,6 +924,24 @@ providers:
       invalid:
         status_code: "4\\d\\d"
 
+  opsgenie:
+    validation:
+      request:
+        id: "opsgenie:validation"
+        desc: "opsgenie: valid api token"
+        params:
+        - name: opsgenie_1
+          desc: opsgenie API key
+        uri: https://api.opsgenie.com/v2/alerts
+        method: get
+        headers:
+          Authorization:
+          - "GenieKey {{opsgenie_1}}"
+      response:
+        status_code: "200"
+      invalid:
+        status_code: "4\\d\\d"
+
   pendo:
     validation:
       request:
