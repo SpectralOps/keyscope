@@ -234,6 +234,29 @@ keyscope validate tester -p TESTER_1 TESTER_2
 </td></tr>
 <tr><td>
 
+**infura**<br/>infura API key
+
+</td>
+<td>
+
+validation
+
+</td>
+<td>
+
+`infura_1` - infura API key
+
+</td>
+</tr>
+<tr>
+<td colspan="3">
+
+```
+keyscope validate infura -p INFURA_1
+```
+</td></tr>
+<tr><td>
+
 **covalenthq**<br/>Covalent: valid key
 
 </td>
@@ -303,32 +326,7 @@ keyscope validate bitly -p BITLY_1
 </td></tr>
 <tr><td>
 
-**infura**<br/>Infura: valid api key
-
-</td>
-<td>
-
-validation
-
-</td>
-<td>
-
-`infura_1` - infura api key
-
-</td>
-</tr>
-<tr>
-<td colspan="3">
-
-```
-keyscope validate infura -p INFURA_1
-```
-</td></tr>
-
-<tr><td>
-<tr><td>
-
-**ipstack**<br/>Ipstack: valid access key
+**ipstack**<br/>ipstack access key
 
 </td>
 <td>
@@ -349,7 +347,6 @@ validation
 keyscope validate ipstack -p IPSTACK_1
 ```
 </td></tr>
-
 <tr><td>
 
 **localytics**<br/>Localytics: valid API credentials
@@ -904,29 +901,6 @@ keyscope validate stripe -p STRIPE_1
 </td></tr>
 <tr><td>
 
-**telegram-bot**<br/>Telegram-bot: valid telegram bot key
-
-</td>
-<td>
-
-validation
-
-</td>
-<td>
-
-`telegram-bot_1` - bot key
-
-</td>
-</tr>
-<tr>
-<td colspan="3">
-
-```
-keyscope validate telegram-bot -p TELEGRAM-BOT_1
-```
-</td></tr>
-<tr><td>
-
 **travisci**<br/>travisci: valid API credentials
 
 </td>
@@ -1224,8 +1198,239 @@ validation
 keyscope validate square -p SQUARE_1
 ```
 </td></tr>
+<tr><td>
+
+**telegram-bot**<br/>telegram-bot: valid bot token
+
+</td>
+<td>
+
+validation
+
+</td>
+<td>
+
+`telegram-bot_1` - bot key
+
+</td>
+</tr>
+<tr>
+<td colspan="3">
+
+```
+keyscope validate telegram-bot -p TELEGRAM-BOT_1
+```
+</td></tr>
+<tr><td>
+
+**bingmaps**<br/>Bing Maps API: valid access token
+
+</td>
+<td>
+
+validation
+
+</td>
+<td>
+
+`bingmaps_1` - Bing Maps token
+
+</td>
+</tr>
+<tr>
+<td colspan="3">
+
+```
+keyscope validate bingmaps -p BINGMAPS_1
+```
+</td></tr>
+<tr><td>
+
+**buttercms**<br/>ButterCMS: valid bot token
+
+</td>
+<td>
+
+validation
+
+</td>
+<td>
+
+`buttercms_1` - ButterCMS API key
+
+</td>
+</tr>
+<tr>
+<td colspan="3">
+
+```
+keyscope validate buttercms -p BUTTERCMS_1
+```
+</td></tr>
+<tr><td>
+
+**wakatime**<br/>wakatime: valid api token
+
+</td>
+<td>
+
+validation
+
+</td>
+<td>
+
+`wakatime_1` - WakeTime API key
+
+</td>
+</tr>
+<tr>
+<td colspan="3">
+
+```
+keyscope validate wakatime -p WAKATIME_1
+```
+</td></tr>
+<tr><td>
+
+**calendly**<br/>calendly: valid API credentials
+
+</td>
+<td>
+
+validation
+
+</td>
+<td>
+
+`calendly_1` - calendly API key
+
+</td>
+</tr>
+<tr>
+<td colspan="3">
+
+```
+keyscope validate calendly -p CALENDLY_1
+```
+</td></tr>
+<tr><td>
+
+**shodan**<br/>shodan: valid api token
+
+</td>
+<td>
+
+validation
+
+</td>
+<td>
+
+`shodan_1` - Shodan API key
+
+</td>
+</tr>
+<tr>
+<td colspan="3">
+
+```
+keyscope validate shodan -p SHODAN_1
+```
+</td></tr>
+<tr><td>
+
+**opsgenie**<br/>opsgenie: valid api token
+
+</td>
+<td>
+
+validation
+
+</td>
+<td>
+
+`opsgenie_1` - opsgenie API key
+
+</td>
+</tr>
+<tr>
+<td colspan="3">
+
+```
+keyscope validate opsgenie -p OPSGENIE_1
+```
+</td></tr>
+<tr><td>
+
+**pendo**<br/>pendo: valid api token
+
+</td>
+<td>
+
+validation
+
+</td>
+<td>
+
+`pendo_1` - pendo API key
+
+</td>
+</tr>
+<tr>
+<td colspan="3">
+
+```
+keyscope validate pendo -p PENDO_1
+```
+</td></tr>
+<tr><td>
+
+**hubspot**<br/>hubspot: valid api token
+
+</td>
+<td>
+
+validation
+
+</td>
+<td>
+
+`hubspot_1` - hubspot API key
+
+</td>
+</tr>
+<tr>
+<td colspan="3">
+
+```
+keyscope validate hubspot -p HUBSPOT_1
+```
+</td></tr>
+<tr><td>
+
+**lokalise**<br/>lokalise: valid api token
+
+</td>
+<td>
+
+validation
+
+</td>
+<td>
+
+`lokalise_1` - lokalise token
+
+</td>
+</tr>
+<tr>
+<td colspan="3">
+
+```
+keyscope validate lokalise -p LOKALISE_1
+```
+</td></tr>
 </table>
 <!-- /providers -->
+
 
 
 
