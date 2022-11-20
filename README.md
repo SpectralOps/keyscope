@@ -56,22 +56,22 @@ $ keyscope validate github $GITHUB_TOKEN
 You can see which other providers are supported by running:
 
 ```
-$ keyscope validate --providers
+$ keyscope validate --list
 
   .
   :
   .
 
 twilio:validation
-keyscope validate twilio -p p1 p2
+keyscope validate twilio -p twilio_1 twilio_2
 
 twitter:validation
-keyscope validate twitter -p p1
+keyscope validate twitter -p twitter_1
 
 zendesk:validation
-keyscope validate zendesk -p p1 p1
+keyscope validate zendesk -p zendesk_1 zendesk_2
 
-Total 33 providers available.
+Total 44 providers available.
 $
 ```
 
@@ -301,6 +301,55 @@ validation
 keyscope validate bitly -p BITLY_1
 ```
 </td></tr>
+<tr><td>
+
+**infura**<br/>Infura: valid api key
+
+</td>
+<td>
+
+validation
+
+</td>
+<td>
+
+`infura_1` - infura api key
+
+</td>
+</tr>
+<tr>
+<td colspan="3">
+
+```
+keyscope validate infura -p INFURA_1
+```
+</td></tr>
+
+<tr><td>
+<tr><td>
+
+**ipstack**<br/>Ipstack: valid access key
+
+</td>
+<td>
+
+validation
+
+</td>
+<td>
+
+`ipstack_1` - ipstack access key
+
+</td>
+</tr>
+<tr>
+<td colspan="3">
+
+```
+keyscope validate ipstack -p IPSTACK_1
+```
+</td></tr>
+
 <tr><td>
 
 **localytics**<br/>Localytics: valid API credentials
@@ -851,6 +900,29 @@ validation
 
 ```
 keyscope validate stripe -p STRIPE_1
+```
+</td></tr>
+<tr><td>
+
+**telegram-bot**<br/>Telegram-bot: valid telegram bot key
+
+</td>
+<td>
+
+validation
+
+</td>
+<td>
+
+`telegram-bot_1` - bot key
+
+</td>
+</tr>
+<tr>
+<td colspan="3">
+
+```
+keyscope validate telegram-bot -p TELEGRAM-BOT_1
 ```
 </td></tr>
 <tr><td>

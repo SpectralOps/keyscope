@@ -22,6 +22,22 @@ providers:
         err:
           status_code: "500"
 
+  infura:
+    validation:
+      request:
+        id: "infura:validation"
+        desc: "infura API key"
+        params:
+        - name: infura_1
+          desc: infura API key
+        uri: https://mainnet.infura.io/v3/{{infura_1}}
+        body: '{"jsonrpc": "2.0", "id": 1, "method": "eth_blockNumber", "params": []}'
+        method: post
+      response:
+        body: "^((?!invalid project id).)*$"
+      invalid:
+        status_code: "5\\d\\d"
+
   covalenthq:
     validation:
       request:
@@ -64,6 +80,21 @@ providers:
         uri: https://api-ssl.bitly.com/v3/shorten?access_token={{bitly_1}}&longUrl=https://www.google.com
       response:
         body: "status_code\":200"
+      invalid:
+        status_code: "5\\d\\d"
+
+  ipstack:
+    validation:
+      request:
+        id: "ipstack:validation"
+        desc: "ipstack access key"
+        params:
+        - name: ipstack_1 
+          desc: ipstack access key
+        uri: http://api.ipstack.com/134.201.250.155?access_key={{ipstack_1}}
+        method: get
+      response:
+        body: "^((?!invalid_access_key).)*$"
       invalid:
         status_code: "5\\d\\d"
 
@@ -815,3 +846,153 @@ providers:
         status_code: "200"
       invalid:
         status_code: "5\\d\\d"
+
+  bingmaps:
+    validation:
+      request:
+        id: "bingmaps:validation"
+        desc: "Bing Maps API: valid access token"
+        params:
+        - name: bingmaps_1
+          desc: Bing Maps token
+        uri: https://dev.virtualearth.net/REST/v1/Locations?CountryRegion=US&adminDistrict=WA&locality=Somewhere&postalCode=98001&addressLine=100%20Main%20St.&key={{bingmaps_1}}
+      response:
+        body: "ValidCredentials"
+      invalid:
+        status_code: "4\\d\\d"
+
+  buttercms:
+    validation:
+      request:
+        id: "buttercms:validation"
+        desc: "ButterCMS: valid bot token"
+        params:
+        - name: buttercms_1
+          desc: ButterCMS API key
+        uri: https://api.buttercms.com/v2/posts/?auth_token={{buttercms_1}}
+        method: get
+      response:
+        status_code: "200"
+      invalid:
+        status_code: "4\\d\\d"
+
+  wakatime:
+    validation:
+      request:
+        id: "wakatime:validation"
+        desc: "wakatime: valid api token"
+        params:
+        - name: wakatime_1
+          desc: WakeTime API key
+        uri: https://wakatime.com/api/v1/users/current/projects/?api_key={{wakatime_1}}
+        method: get
+      response:
+        status_code: "200"
+      invalid:
+        status_code: "4\\d\\d"
+
+  calendly:
+    validation:
+      request:
+        id: "calendly:validation"
+        desc: "calendly: valid API credentials"
+        params:
+        - name: calendly_1
+          desc: calendly API key
+        uri: https://calendly.com/api/v1/users/me
+        method: get
+        headers:
+          X-TOKEN:
+          - "{{calendly_1}}"
+      response:
+        status_code: "200"
+      invalid:
+        status_code: "4\\d\\d"
+
+  shodan:
+    validation:
+      request:
+        id: "shodan:validation"
+        desc: "shodan: valid api token"
+        params:
+        - name: shodan_1
+          desc: Shodan API key
+        uri: https://api.shodan.io/shodan/host/8.8.8.8?key={{shodan_1}}
+        method: get
+      response:
+        status_code: "200"
+      invalid:
+        status_code: "4\\d\\d"
+
+  opsgenie:
+    validation:
+      request:
+        id: "opsgenie:validation"
+        desc: "opsgenie: valid api token"
+        params:
+        - name: opsgenie_1
+          desc: opsgenie API key
+        uri: https://api.opsgenie.com/v2/alerts
+        method: get
+        headers:
+          Authorization:
+          - "GenieKey {{opsgenie_1}}"
+      response:
+        status_code: "200"
+      invalid:
+        status_code: "4\\d\\d"
+
+  pendo:
+    validation:
+      request:
+        id: "pendo:validation"
+        desc: "pendo: valid api token"
+        params:
+        - name: pendo_1
+          desc: pendo API key
+        uri: https://app.pendo.io/api/v1/feature
+        method: get
+        headers:
+          Content-Type:
+          - application/json
+          x-pendo-integration-key:
+          - "{{pendo_1}}"
+      response:
+        status_code: "200"
+      invalid:
+        status_code: "4\\d\\d"
+
+  hubspot:
+    validation:
+      request:
+        id: "hubspot:validation"
+        desc: "hubspot: valid api token"
+        params:
+        - name: hubspot_1
+          desc: hubspot API key
+        uri: https://api.hubapi.com/owners/v2/owners?hapikey={{hubspot_1}}
+        method: get
+      response:
+        status_code: "200"
+      invalid:
+        status_code: "4\\d\\d"
+
+  lokalise:
+    validation:
+      request:
+        id: "lokalise:validation"
+        desc: "lokalise: valid api token"
+        params:
+        - name: lokalise_1
+          desc: lokalise token
+        uri: https://api.lokalise.com/api2/projects
+        method: get
+        headers:
+          Content-Type:
+          - application/json
+          X-Api-Token:
+          - "{{lokalise_1}}"
+      response:
+        status_code: "200"
+      invalid:
+        status_code: "4\\d\\d"
