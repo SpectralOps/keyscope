@@ -976,3 +976,23 @@ providers:
         status_code: "200"
       invalid:
         status_code: "4\\d\\d"
+
+  lokalise:
+    validation:
+      request:
+        id: "lokalise:validation"
+        desc: "lokalise: valid api token"
+        params:
+        - name: lokalise_1
+          desc: lokalise token
+        uri: https://api.lokalise.com/api2/projects
+        method: get
+        headers:
+          Content-Type:
+          - application/json
+          X-Api-Token:
+          - "{{lokalise_1}}"
+      response:
+        status_code: "200"
+      invalid:
+        status_code: "4\\d\\d"
