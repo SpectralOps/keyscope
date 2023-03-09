@@ -1,6 +1,6 @@
 [package]
 name = "keyscope"
-version = "1.2.3"
+version = "1.3.0"
 edition = "2018"
 build = "build.rs"
 
@@ -9,16 +9,16 @@ build = "build.rs"
 [dependencies]
 
 clap = "3.0.0-beta.4"
-service_policy_kit="0.7.0"
-serde="*"
-serde_json="*"
-serde_derive="*"
-serde_yaml="*"
-env_logger="*"
-anyhow="*"
-console="*"
-csv="*"
+service_policy_kit = "0.7.0"
+serde = "*"
+serde_json = "*"
+serde_derive = "*"
+serde_yaml = "*"
+env_logger = "*"
+anyhow = "*"
+console = "*"
+csv = "*"
 
 [build-dependencies]
 vergen = "*"
-anyhow="*"
+anyhow = "*"

@@ -1,0 +1,31 @@
+targets:
+  - platform: win32
+    arch: x64
+    url_template: https://github.com/spectralops/keyscope/releases/download/v__VERSION__/keyscope-x86_64-windows.zip
+  - platform: linux
+    arch: x64
+    url_template: https://github.com/spectralops/keyscope/releases/download/v__VERSION__/keyscope-x86_64-linux.tar.xz
+  - platform: darwin
+    arch: x64
+    url_template: https://github.com/spectralops/keyscope/releases/download/v__VERSION__/keyscope-x86_64-macos.tar.xz
+  - platform: darwin
+    arch: arm64
+    url_template: https://github.com/spectralops/keyscope/releases/download/v__VERSION__/keyscope-aarch64-macos.tar.xz
+brew:
+  name: mm 
+  publish: true
+  tap: spectralops/homebrew-tap
+  recipe_fname: keyscope.rb
+  recipe_template: |
+    class Keyscope < Formula
+      desc "Keyscope is a key and secret workflow (validation, invalidation, etc.) tool built in Rust"
+      homepage "http://github.com/spectralops/keyscope"
+      url "__URL__"
+      version "__VERSION__"
+      sha256 "__SHA__"
+
+      def install
+        bin.install "keyscope"
+      end
+    end
+
