@@ -1,3 +1,4 @@
+repo: spectralops/keyscope
 targets:
   - platform: win32
     arch: x64
