@@ -83,7 +83,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
-        rust: [${{ env.RUST_TOOLCHAIN }}]
+        rust: [stable]
     runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout sources
