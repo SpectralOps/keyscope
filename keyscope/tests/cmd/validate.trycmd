@@ -1,0 +1,94 @@
+```console
+$ keyscope validate --help
+Validate keys
+
+Usage: keyscope validate [OPTIONS] <PROVIDER>
+
+Arguments:
+  <PROVIDER>
+          Specify the provider to validate for
+
+Options:
+  -d, --dry-run
+          Dry run with examples given in `EXAMPLE_KEY`
+
+  -r, --reporter <REPORTER>
+          Reporter to use
+          
+          [default: stdout]
+
+          Possible values:
+          - stdout: Export to the console STDOUT
+
+  -f, --flip
+          Flip the meaning of success
+
+  -n, --no-banner
+          Don't show the banner
+
+  -p, --params <PARAMS>
+          List of parameters
+
+  -v, --verbose
+          Log level
+
+  -c, --config <CONFIG>
+          Path to configuration file
+
+  -h, --help
+          Print help (see a summary with '-h')
+
+  -V, --version
+          Print version
+
+```
+
+```console
+$ keyscope validate unexisting-provider --no-banner
+? 1
+❗ params not found `keyscope providers` to see all available providers
+
+```
+
+```console
+$ keyscope validate tester --no-banner
+? 1
+❗ empty arguments
+
+```
+
+```console
+$ keyscope validate tester -p arg1 --no-banner
+? 1
+❗ parameters not valid for provider
+
+```
+
+```console
+$ keyscope validate github -p arg1 --no-banner 
+? 1
+• github:validation: started
+✗ github:validation: failed [..]
+
+Ran 1 interactions with 1 checks in [..]
+
+```
+
+```console
+$ keyscope validate github -p arg1 --no-banner --dry-run
+• github:validation: started
+✔ github:validation: ok [..]
+
+Ran 1 interactions with 1 checks in [..]
+
+```
+
+```console
+$ keyscope validate github -p arg1 --no-banner --dry-run --flip
+? 1
+• github:validation: started
+✔ github:validation: ok [..]
+
+Ran 1 interactions with 1 checks in [..]
+
+```

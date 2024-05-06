@@ -1,0 +1,49 @@
+```console
+$ keyscope requirements --help
+Show provider requirements (params)
+
+Usage: keyscope requirements [OPTIONS] <PROVIDER>
+
+Arguments:
+  <PROVIDER>  Specify the provider to validate for
+
+Options:
+  -n, --no-banner        Don't show the banner
+  -v, --verbose          Log level
+  -c, --config <CONFIG>  Path to configuration file
+  -h, --help             Print help
+  -V, --version          Print version
+
+```
+
+```console
+$ keyscope requirements
+? 2
+error: the following required arguments were not provided:
+  <PROVIDER>
+
+Usage: keyscope requirements <PROVIDER>
+
+For more information, try '--help'.
+
+```
+
+```console
+$ keyscope requirements unexisting-provider --no-banner
+? 1
+❗ params not found `keyscope providers` to see all available providers
+
+```
+
+```console
+$ keyscope requirements tester --no-banner
+provider tester requires:
+ - param: tester_1
+   desc: hookbin ID (https://hookb.in)
+ - param: tester_2
+   desc: fake key to put as a query param
+
+To use from the CLI, run:
+  keyscope validate tester -p PARAM1 PARAM2 ...
+
+```

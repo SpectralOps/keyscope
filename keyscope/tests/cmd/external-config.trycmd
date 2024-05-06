@@ -1,0 +1,38 @@
+```console
+$ keyscope providers --config config.yaml --no-banner
+custom:validation
+keyscope validate custom -p custom_1
+
+custom_2:validation
+keyscope validate custom_2 -p custom_2_1 custom_2_2
+
+Total 2 providers available.
+
+```
+
+```console
+$ keyscope requirements unexisting-provider --config config.yaml --no-banner
+? 1
+❗ params not found `keyscope providers` to see all available providers
+
+```
+
+```console
+$ keyscope requirements custom --config config.yaml --no-banner
+provider custom requires:
+ - param: custom_1
+   desc: custom token
+
+To use from the CLI, run:
+  keyscope validate custom -p PARAM1 PARAM2 ...
+
+```
+
+```console
+$ keyscope validate custom -p test --config config.yaml --no-banner --dry-run
+• custom:validation: started
+✔ custom:validation: ok [..]
+
+Ran 1 interactions with 1 checks in [..]
+
+```
