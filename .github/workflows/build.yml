@@ -7,6 +7,10 @@ on:
   schedule:
     - cron: '00 01 * * *'
 
+env:
+  RUST_TOOLCHAIN: stable
+  TOOLCHAIN_PROFILE: minimal
+
 jobs:
   check:
     name: Check
@@ -18,8 +22,8 @@ jobs:
       - name: Install stable toolchain
         uses: actions-rs/toolchain@v1
         with:
-          profile: minimal
-          toolchain: stable
+          profile: ${{ env.TOOLCHAIN_PROFILE }}
+          toolchain: ${{ env.RUST_TOOLCHAIN }}
           override: true
 
       - uses: Swatinem/rust-cache@v1
@@ -61,8 +65,8 @@ jobs:
       - name: Install stable toolchain
         uses: actions-rs/toolchain@v1
         with:
-          profile: minimal
-          toolchain: stable
+          profile: ${{ env.TOOLCHAIN_PROFILE }}
+          toolchain: ${{ env.RUST_TOOLCHAIN }}
           override: true
           components: rustfmt, clippy
 
@@ -79,7 +83,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
-        rust: [stable]
+        rust: [${{ env.RUST_TOOLCHAIN }}]
     runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout sources
@@ -88,7 +92,7 @@ jobs:
       - name: Install stable toolchain
         uses: actions-rs/toolchain@v1
         with:
-          profile: minimal
+          profile: ${{ env.TOOLCHAIN_PROFILE }}
           toolchain: ${{ matrix.rust }}
           override: true
 
