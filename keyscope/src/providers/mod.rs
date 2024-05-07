@@ -66,7 +66,10 @@ impl Provider {
     /// # Errors
     ///
     /// Return an [`Error`] with the validation process
-    pub fn key_validate(&self, params: &[String]) -> Result<RunnerReport> {
+    pub fn key_validate<T>(&self, params: &[T]) -> Result<RunnerReport>
+    where
+        T: AsRef<str>,
+    {
         let opts = RunOptions::build(None, false, None, false);
         self.key_validate_with_opts(params, &opts)
     }
@@ -76,11 +79,10 @@ impl Provider {
     /// # Errors
     ///
     /// Return an [`Error`] with the validation process
-    pub fn key_validate_with_opts(
-        &self,
-        params: &[String],
-        opts: &RunOptions,
-    ) -> Result<RunnerReport> {
+    pub fn key_validate_with_opts<T>(&self, params: &[T], opts: &RunOptions) -> Result<RunnerReport>
+    where
+        T: AsRef<str>,
+    {
         if params.is_empty() {
             return Err(Error::EmptyArguments);
         }
@@ -96,7 +98,12 @@ impl Provider {
         params
             .iter()
             .enumerate()
-            .map(|(i, value)| (format!("{}_{}", self.name(), i + 1), value.to_string()))
+            .map(|(i, value)| {
+                (
+                    format!("{}_{}", self.name(), i + 1),
+                    value.as_ref().to_string(),
+                )
+            })
             .for_each(|(k, v)| {
                 context.vars_bag.insert(k, v);
             });
