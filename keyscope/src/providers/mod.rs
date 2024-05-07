@@ -9,7 +9,7 @@ pub trait ProviderTrait: Sync {
     fn config(&self) -> &ActionMapping;
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Provider {
     name: String,
     config: ActionMapping,
@@ -117,69 +117,76 @@ impl Provider {
 macro_rules! define_provider_type {
     ($(($struct_name:ident, $key:expr)),*) => {
         $(
-            #[must_use]
-            pub fn $struct_name() -> Provider {
-                Provider::new(stringify!($struct_name).to_string(), DEFAULT_CONFIG.providers.get($key).unwrap().clone())
+            lazy_static::lazy_static! {
+                pub static ref $struct_name: Provider = Provider::new($key.to_string(), DEFAULT_CONFIG.providers.get($key).unwrap().clone());
             }
         )*
+
+        #[must_use] pub fn all_providers_ref() -> Vec<&'static Provider> {
+            vec![$(&$struct_name),*]
+        }
+
+        #[must_use] pub fn all_providers() -> Vec<Provider> {
+            vec![$($struct_name.clone()),*]
+        }
     };
 }
 
 // Example usage
 define_provider_type!(
-    (tester, "tester"),
-    (infura, "infura"),
-    (covalenthq, "covalenthq"),
-    (asana, "asana"),
-    (bitly, "bitly"),
-    (ipstack, "ipstack"),
-    (localytics, "localytics"),
-    (algolia, "algolia"),
-    (branchio, "branchio"),
-    (browserstack, "browserstack"),
-    (buildkite, "buildkite"),
-    (datadog, "datadog"),
-    (github, "github"),
-    (github_ent, "github-ent"),
-    (dropbox, "dropbox"),
-    (gitlab, "gitlab"),
-    (heroku, "heroku"),
-    (mailchimp, "mailchimp"),
-    (mailgun, "mailgun"),
-    (pagerduty, "pagerduty"),
-    (circleci, "circleci"),
-    (facebook_access_token, "facebook-access-token"),
-    (salesforce, "salesforce"),
-    (jumpcloud, "jumpcloud"),
-    (saucelabs_us, "saucelabs-us"),
-    (saucelabs_eu, "saucelabs-eu"),
-    (sendgrid, "sendgrid"),
-    (slack, "slack"),
-    (slack_webhook, "slack-webhook"),
-    (stripe, "stripe"),
-    (travisci, "travisci"),
-    (twilio, "twilio"),
-    (twitter, "twitter"),
-    (zendesk, "zendesk"),
-    (firebase, "firebase"),
-    (aws, "aws"),
-    (elastic_apm_secret, "elastic-apm-secret"),
-    (artifactory, "artifactory"),
-    (ibm_cos, "ibm-cos"),
-    (ibm_iam, "ibm-iam"),
-    (ibm_cloudant, "ibm-cloudant"),
-    (softlayer, "softlayer"),
-    (square, "square"),
-    (telegram_bot, "telegram-bot"),
-    (bingmaps, "bingmaps"),
-    (buttercms, "buttercms"),
-    (wakatime, "wakatime"),
-    (calendly, "calendly"),
-    (shodan, "shodan"),
-    (opsgenie, "opsgenie"),
-    (pendo, "pendo"),
-    (hubspot, "hubspot"),
-    (lokalise, "lokalise")
+    (TESTER, "tester"),
+    (INFURA, "infura"),
+    (COVALENTHQ, "covalenthq"),
+    (ASANA, "asana"),
+    (BITLY, "bitly"),
+    (IPSTACK, "ipstack"),
+    (LOCALYTICS, "localytics"),
+    (ALGOLIA, "algolia"),
+    (BRANCHIO, "branchio"),
+    (BROWSERSTACK, "browserstack"),
+    (BUILDKITE, "buildkite"),
+    (DATADOG, "datadog"),
+    (GITHUB, "github"),
+    (GITHUB_ENT, "github-ent"),
+    (DROPBOX, "dropbox"),
+    (GITLAB, "gitlab"),
+    (HEROKU, "heroku"),
+    (MAILCHIMP, "mailchimp"),
+    (MAILGUN, "mailgun"),
+    (PAGERDUTY, "pagerduty"),
+    (CIRCLECI, "circleci"),
+    (FACEBOOK_ACCESS_TOKEN, "facebook-access-token"),
+    (SALESFORCE, "salesforce"),
+    (JUMPCLOUD, "jumpcloud"),
+    (SAUCELABS_US, "saucelabs-us"),
+    (SAUCELABS_EU, "saucelabs-eu"),
+    (SENDGRID, "sendgrid"),
+    (SLACK, "slack"),
+    (SLACK_WEBHOOK, "slack-webhook"),
+    (STRIPE, "stripe"),
+    (TRAVISCI, "travisci"),
+    (TWILIO, "twilio"),
+    (TWITTER, "twitter"),
+    (ZENDESK, "zendesk"),
+    (FIREBASE, "firebase"),
+    (AWS, "aws"),
+    (ELASTIC_APM_SECRET, "elastic-apm-secret"),
+    (ARTIFACTORY, "artifactory"),
+    (IBM_COS, "ibm-cos"),
+    (IBM_IAM, "ibm-iam"),
+    (IBM_CLOUDANT, "ibm-cloudant"),
+    (SOFTLAYER, "softlayer"),
+    (SQUARE, "square"),
+    (TELEGRAM_BOT, "telegram-bot"),
+    (BINGMAPS, "bingmaps"),
+    (BUTTERCMS, "buttercms"),
+    (WAKATIME, "wakatime"),
+    (CALENDLY, "calendly"),
+    (SHODAN, "shodan"),
+    (OPSGENIE, "opsgenie"),
+    (PENDO, "pendo"),
+    (HUBSPOT, "hubspot"),
+    (LOKALISE, "lokalise")
 );
 
 #[derive(Debug, Clone, Serialize, Deserialize)]

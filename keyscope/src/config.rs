@@ -27,68 +27,14 @@ impl From<Definitions> for Config {
     }
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize)]
 pub struct Config {
     pub providers: Vec<providers::Provider>,
 }
 
 impl Default for Config {
     fn default() -> Self {
-        let providers = vec![
-            providers::tester(),
-            providers::infura(),
-            providers::covalenthq(),
-            providers::asana(),
-            providers::bitly(),
-            providers::ipstack(),
-            providers::localytics(),
-            providers::algolia(),
-            providers::branchio(),
-            providers::browserstack(),
-            providers::buildkite(),
-            providers::datadog(),
-            providers::github(),
-            providers::github_ent(),
-            providers::dropbox(),
-            providers::gitlab(),
-            providers::heroku(),
-            providers::mailchimp(),
-            providers::mailgun(),
-            providers::pagerduty(),
-            providers::circleci(),
-            providers::facebook_access_token(),
-            providers::salesforce(),
-            providers::jumpcloud(),
-            providers::saucelabs_us(),
-            providers::saucelabs_eu(),
-            providers::sendgrid(),
-            providers::slack(),
-            providers::slack_webhook(),
-            providers::stripe(),
-            providers::travisci(),
-            providers::twilio(),
-            providers::twitter(),
-            providers::zendesk(),
-            providers::firebase(),
-            providers::aws(),
-            providers::elastic_apm_secret(),
-            providers::artifactory(),
-            providers::ibm_cos(),
-            providers::ibm_iam(),
-            providers::ibm_cloudant(),
-            providers::softlayer(),
-            providers::square(),
-            providers::telegram_bot(),
-            providers::bingmaps(),
-            providers::buttercms(),
-            providers::wakatime(),
-            providers::calendly(),
-            providers::shodan(),
-            providers::opsgenie(),
-            providers::pendo(),
-            providers::hubspot(),
-            providers::lokalise(),
-        ];
+        let providers: Vec<providers::Provider> = providers::all_providers();
         Self { providers }
     }
 }
