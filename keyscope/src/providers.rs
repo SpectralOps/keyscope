@@ -132,7 +132,6 @@ macro_rules! define_provider_type {
     };
 }
 
-// Example usage
 define_provider_type!(
     (TESTER, "tester"),
     (INFURA, "infura"),
