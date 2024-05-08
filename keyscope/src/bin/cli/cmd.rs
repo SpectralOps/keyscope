@@ -1,13 +1,10 @@
 use std::path::PathBuf;
 
 use clap::{ArgAction, Parser, Subcommand};
-use keyscope::{
-    config::{Config, Definitions},
-    out,
-};
+use keyscope::config::{Config, Definitions};
 use service_policy_kit::runner::RunOptions;
 
-use super::{exit::CmdResult, output};
+use super::{exit::CmdResult, out};
 
 #[derive(Parser)]
 #[command(author, version, about, long_about = None)]
@@ -87,7 +84,7 @@ pub fn run(args: Cli) -> anyhow::Result<CmdResult> {
                 Ok(p) => p,
                 Err(err) => {
                     tracing::debug!(provider = provider, error = ?err, "provider not exists");
-                    return Ok(CmdResult::error_with_message(output::provider_not_found()));
+                    return Ok(CmdResult::error_with_message(out::provider_not_found()));
                 }
             };
 
@@ -115,18 +112,18 @@ pub fn run(args: Cli) -> anyhow::Result<CmdResult> {
                 Ok(p) => p,
                 Err(err) => {
                     tracing::debug!(provider = provider, error = ?err, "provider not exists");
-                    return Ok(CmdResult::error_with_message(output::provider_not_found()));
+                    return Ok(CmdResult::error_with_message(out::provider_not_found()));
                 }
             };
             let Some(params) = provider.get_validation_request_params()? else {
                 return Ok(CmdResult::error_with_message("params not found"));
             };
 
-            Ok(CmdResult::ok_with_message(&output::requirements_results(
+            Ok(CmdResult::ok_with_message(&out::requirements_results(
                 provider, params,
             )))
         }
-        Commands::Providers {} => Ok(CmdResult::ok_with_message(&output::supported_providers(
+        Commands::Providers {} => Ok(CmdResult::ok_with_message(&out::supported_providers(
             &config.providers,
         ))),
     }

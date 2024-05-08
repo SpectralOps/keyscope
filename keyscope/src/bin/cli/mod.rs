@@ -1,5 +1,5 @@
 mod cmd;
 pub mod exit;
-mod output;
+mod out;
 
 pub use cmd::*;
