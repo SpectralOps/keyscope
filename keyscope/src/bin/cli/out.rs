@@ -12,7 +12,7 @@ use service_policy_kit::data::Param;
 pub enum Reporter {
     /// Export to the console STDOUT.
     #[serde(alias = "console")]
-    STDOUT,
+    Stdout,
 }
 
 impl std::fmt::Display for Reporter {
