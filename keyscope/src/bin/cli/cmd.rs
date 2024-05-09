@@ -95,7 +95,10 @@ pub fn run(args: Cli) -> anyhow::Result<CmdResult> {
                     None
                 },
                 flip,
-                Some(reporter.to_string()),
+                match reporter {
+                    out::Reporter::Quiet => None,
+                    _ => Some(reporter.to_string()),
+                },
                 args.verbose,
             );
 

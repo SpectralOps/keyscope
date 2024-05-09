@@ -17,7 +17,7 @@ tracing-subscriber = { version = "0.3.16", features = [
     "env-filter",
 ], optional = true }
 
-service_policy_kit = { version = "0.7.0" }
+service_policy_kit = { git = "https://github.com/SpectralOps/service-policy-kit", rev = "451c74d" }
 serde = { version = "1.0.200" }
 serde_derive = "1.0.200"
 serde_yaml = { version = "0.9.34" }

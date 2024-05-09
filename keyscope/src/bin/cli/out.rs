@@ -8,11 +8,20 @@ use serde::{Deserialize, Serialize};
 use serde_variant::to_variant_name;
 use service_policy_kit::data::Param;
 
-#[derive(clap::ValueEnum, Clone, Deserialize, Serialize)]
+#[derive(clap::ValueEnum, Debug, Clone, Deserialize, Serialize)]
 pub enum Reporter {
     /// Export to the console STDOUT.
-    #[serde(alias = "console")]
+    #[serde(rename = "console")]
     Stdout,
+    /// Json format.
+    #[serde(rename = "json")]
+    Json,
+    /// Junit format.
+    #[serde(rename = "junit")]
+    Junit,
+    /// disable check results.
+    #[serde(rename = "quiet")]
+    Quiet,
 }
 
 impl std::fmt::Display for Reporter {

@@ -19,6 +19,9 @@ Options:
 
           Possible values:
           - stdout: Export to the console STDOUT
+          - json:   Json format
+          - junit:  Junit format
+          - quiet:  disable check results
 
   -f, --flip
           Flip the meaning of success

@@ -132,6 +132,19 @@ macro_rules! define_provider_type {
     };
 }
 
+/// Get provider by name
+///
+/// # Errors
+///
+/// Return [`Error`] if provider not exists
+pub fn get(name: &str) -> Result<Provider> {
+    all_providers()
+        .iter()
+        .find(|p| p.name() == name)
+        .ok_or(Error::ProviderNotExists)
+        .cloned()
+}
+
 define_provider_type!(
     (TESTER, "tester"),
     (INFURA, "infura"),
