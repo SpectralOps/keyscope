@@ -37,7 +37,12 @@ pub const fn provider_not_found() -> &'static str {
 pub fn requirements_results(provider: &Provider, params: &[Param]) -> String {
     let params_str: String = params
         .iter()
-        .map(|p| format!(" - param: {}\n   desc: {}", p.name, p.desc))
+        .map(|p| {
+            format!(
+                " - param: {}\n   desc: {}\n   optional: {}",
+                p.name, p.desc, p.optional
+            )
+        })
         .collect::<Vec<_>>()
         .join("\n");
 

@@ -40,8 +40,10 @@ $ keyscope requirements tester --no-banner
 provider tester requires:
  - param: tester_1
    desc: hookbin ID (https://hookb.in)
+   optional: false
  - param: tester_2
    desc: fake key to put as a query param
+   optional: false
 
 To use from the CLI, run:
   keyscope validate tester -p PARAM1 PARAM2 ...

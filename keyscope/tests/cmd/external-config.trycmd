@@ -22,6 +22,7 @@ $ keyscope requirements custom --config config.yaml --no-banner
 provider custom requires:
  - param: custom_1
    desc: custom token
+   optional: false
 
 To use from the CLI, run:
   keyscope validate custom -p PARAM1 PARAM2 ...

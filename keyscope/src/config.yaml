@@ -672,11 +672,15 @@ providers:
           desc: AWS ID
         - name: aws_2
           desc: AWS secret
+        - name: aws_3
+          desc: AWS token
+          optional: true
         uri: https://sts.amazonaws.com
         method: post
         aws_auth:
           key: "{{aws_1}}"
           secret: "{{aws_2}}"
+          token: "{{aws_3}}"
           service: "sts"
         headers:
           content-type:

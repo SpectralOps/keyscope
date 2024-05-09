@@ -25,7 +25,7 @@ asana:validation
 keyscope validate asana -p asana_1
 
 aws:validation
-keyscope validate aws -p aws_1 aws_2
+keyscope validate aws -p aws_1 aws_2 aws_3
 
 bingmaps:validation
 keyscope validate bingmaps -p bingmaps_1
