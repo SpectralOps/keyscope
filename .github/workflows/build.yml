@@ -7,6 +7,10 @@ on:
   schedule:
     - cron: '00 01 * * *'
 
+env:
+  RUST_TOOLCHAIN: stable
+  TOOLCHAIN_PROFILE: minimal
+
 jobs:
   check:
     name: Check
@@ -18,8 +22,8 @@ jobs:
       - name: Install stable toolchain
         uses: actions-rs/toolchain@v1
         with:
-          profile: minimal
-          toolchain: stable
+          profile: ${{ env.TOOLCHAIN_PROFILE }}
+          toolchain: ${{ env.RUST_TOOLCHAIN }}
           override: true
 
       - uses: Swatinem/rust-cache@v1
@@ -29,34 +33,28 @@ jobs:
         with:
           command: check
 
-  test:
-    name: Test Suite
-    strategy:
-      matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
-        rust: [stable]
-    runs-on: ${{ matrix.os }}
+  rustfmt:
+    name: Check Style
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
-      - name: Checkout sources
-        uses: actions/checkout@v2
-
-      - name: Install stable toolchain
-        uses: actions-rs/toolchain@v1
+      - name: Checkout the code
+        uses: actions/checkout@v4
+      - uses: actions-rs/toolchain@v1
         with:
-          profile: minimal
-          toolchain: ${{ matrix.rust }}
+          profile: ${{ env.TOOLCHAIN_PROFILE }}
+          toolchain: ${{ env.RUST_TOOLCHAIN }}
           override: true
-
-      - uses: Swatinem/rust-cache@v1
-
-      - name: Run cargo test
+          components: rustfmt
+      - name: Run cargo fmt
         uses: actions-rs/cargo@v1
         with:
-          command: test
+          command: fmt
+          args: --all -- --check
 
-
-  lints:
-    name: Lints
+  clippy:
+    name: Clippy
     runs-on: ubuntu-latest
     steps:
       - name: Checkout sources
@@ -67,21 +65,40 @@ jobs:
       - name: Install stable toolchain
         uses: actions-rs/toolchain@v1
         with:
-          profile: minimal
-          toolchain: stable
+          profile: ${{ env.TOOLCHAIN_PROFILE }}
+          toolchain: ${{ env.RUST_TOOLCHAIN }}
           override: true
           components: rustfmt, clippy
 
       - uses: Swatinem/rust-cache@v1
 
-      - name: Run cargo fmt
-        uses: actions-rs/cargo@v1
-        with:
-          command: fmt
-          args: --all -- --check
-
       - name: Run cargo clippy
         uses: actions-rs/cargo@v1
         with:
           command: clippy
-          args: -- -D warnings
+          args: --all-features -- -D warnings -W clippy::pedantic -W clippy::nursery -W rust-2018-idioms
+
+  test:
+    name: Test Suite
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        rust: [stable]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v2
+
+      - name: Install stable toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          profile: ${{ env.TOOLCHAIN_PROFILE }}
+          toolchain: ${{ matrix.rust }}
+          override: true
+
+      - uses: Swatinem/rust-cache@v1
+
+      - name: Run cargo test
+        uses: actions-rs/cargo@v1
+        with:
+          command: test

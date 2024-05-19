@@ -1,0 +1,38 @@
+providers:
+  custom:
+    validation:
+      request:
+        id: "custom:validation"
+        desc: "custom: valid API credentials"
+        params:
+        - name: custom_1
+          desc: custom token
+        uri: https://example
+        method: get
+        headers:
+          Authorization:
+          - token {{custom_1}}
+      response:
+        status_code: "200"
+      invalid:
+        status_code: "5\\d\\d"
+
+  custom_2:
+    validation:
+      request:
+        id: "custom_2:validation"
+        desc: "custom_2: valid token"
+        params:
+        - name: custom_2_1
+          desc: custom_2 token
+        - name: custom_2_2
+          desc: custom_2 token
+        uri: https://example
+        headers:
+          Authorization: 
+          - "Bearer {{custom_1}}"
+      response:
+        status_code: "200"
+      invalid:
+        status_code: "5\\d\\d"
+
