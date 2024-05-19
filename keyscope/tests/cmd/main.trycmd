@@ -3,7 +3,7 @@ $ keyscope
 ? 2
 Keyscope is a key and secret workflow 
 
-Usage: keyscope [OPTIONS] <COMMAND>
+Usage: keyscope[EXE] [OPTIONS] <COMMAND>
 
 Commands:
   validate      Validate keys
@@ -24,7 +24,7 @@ Options:
 $ keyscope --help
 Keyscope is a key and secret workflow 
 
-Usage: keyscope [OPTIONS] <COMMAND>
+Usage: keyscope[EXE] [OPTIONS] <COMMAND>
 
 Commands:
   validate      Validate keys

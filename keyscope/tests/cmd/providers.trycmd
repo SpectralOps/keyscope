@@ -2,7 +2,7 @@
 $ keyscope providers --help
 Show provider list
 
-Usage: keyscope providers [OPTIONS]
+Usage: keyscope[EXE] providers [OPTIONS]
 
 Options:
   -n, --no-banner        Don't show the banner

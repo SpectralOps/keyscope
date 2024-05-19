@@ -2,7 +2,7 @@
 $ keyscope validate --help
 Validate keys
 
-Usage: keyscope validate [OPTIONS] <PROVIDER>
+Usage: keyscope[EXE] validate [OPTIONS] <PROVIDER>
 
 Arguments:
   <PROVIDER>

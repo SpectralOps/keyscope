@@ -2,7 +2,7 @@
 $ keyscope requirements --help
 Show provider requirements (params)
 
-Usage: keyscope requirements [OPTIONS] <PROVIDER>
+Usage: keyscope[EXE] requirements [OPTIONS] <PROVIDER>
 
 Arguments:
   <PROVIDER>  Specify the provider to validate for
@@ -22,7 +22,7 @@ $ keyscope requirements
 error: the following required arguments were not provided:
   <PROVIDER>
 
-Usage: keyscope requirements <PROVIDER>
+Usage: keyscope[EXE] requirements <PROVIDER>
 
 For more information, try '--help'.
 
