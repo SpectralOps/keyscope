@@ -1,6 +1,8 @@
 ```console
 $ keyscope 
 ? 2
+Keyscope is a key and secret workflow 
+
 Usage: keyscope [OPTIONS] <COMMAND>
 
 Commands:
@@ -20,6 +22,8 @@ Options:
 
 ```console
 $ keyscope --help
+Keyscope is a key and secret workflow 
+
 Usage: keyscope [OPTIONS] <COMMAND>
 
 Commands:
