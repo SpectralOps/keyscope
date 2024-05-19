@@ -1769,8 +1769,9 @@ dependencies = [
 
 [[package]]
 name = "service_policy_kit"
-version = "0.7.0"
-source = "git+https://github.com/SpectralOps/service-policy-kit?rev=57543eb#57543eb77935acde155fe35915091d159ab13093"
+version = "0.7.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "b6f7bd9733d153f25c41f695098cb51aa2a2717f824d72c8586477011acd6f04"
 dependencies = [
  "anyhow",
  "chrono",
