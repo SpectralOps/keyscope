@@ -4,10 +4,16 @@ version = "1.4.0"
 edition = "2021"
 readme = "README.md"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[features]
+default = ["cli"]
+cli = ["dep:clap", "dep:tracing-subscriber", "dep:console"]
+
+[[bin]]
+name = "keyscope"
+required-features = ["cli"]
 
 [dependencies]
-
 # CLI
 clap = { version = "4.5.4", features = ["derive"], optional = true }
 
@@ -28,12 +34,3 @@ console = { version = "0.15.8", optional = true }
 
 [dev-dependencies]
 trycmd = { version = "0.15.1" }
-
-[features]
-default = ["cli"]
-# list optionals here:
-cli = ["dep:clap", "dep:tracing-subscriber", "dep:console"]
-
-[[bin]]
-name = "keyscope"
-required-features = ["cli"]
