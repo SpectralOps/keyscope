@@ -46,6 +46,6 @@ provider tester requires:
    optional: false
 
 To use from the CLI, run:
-  keyscope validate tester -p PARAM1 PARAM2 ...
+  keyscope validate tester -p PARAM1 -p PARAM2 ...
 
 ```
