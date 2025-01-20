@@ -16,7 +16,6 @@
 <hr/>
 </p>
 
-
 <p align="center">
 <img src="media/screen.png" width="1019"/>
 </p>
@@ -27,15 +26,15 @@ Keyscope is a key and secret workflow (validation, invalidation, etc.) tool buil
 
 Current workflows supported:
 
-* Validation
+- Validation
 
 # 🦀 Why Rust?
 
-* With Rust, _"If it compiles, it works."_ and also, it compiles to many platforms.
-* Rust is _fast_, has no _VM_, or unnecessary cruft (typically 5-8mb binaries with LOTS of code and libraries).
-* Multi purpose, safe, and generalistic - makes for healthy and expressive [mission critical code](https://www.youtube.com/watch?v=ylOpCXI2EMM). Adding code or abstraction doesn't increase bloat, doesn't hurt performance, doesn't increase chance for bugs in a radical way (less edge cases).
-* Amazing package manager: `Cargo`. Productive installing and running of tasks and examples.
-* Rust is getting headlines in the security community as the go-to language for security tools. Equally interesting is offensive security + Rust [here](https://github.com/trickster0/OffensiveRust) and [here](https://github.com/skerkour/black-hat-rust).
+- With Rust, _"If it compiles, it works."_ and also, it compiles to many platforms.
+- Rust is _fast_, has no _VM_, or unnecessary cruft (typically 5-8mb binaries with LOTS of code and libraries).
+- Multi purpose, safe, and generalistic - makes for healthy and expressive [mission critical code](https://www.youtube.com/watch?v=ylOpCXI2EMM). Adding code or abstraction doesn't increase bloat, doesn't hurt performance, doesn't increase chance for bugs in a radical way (less edge cases).
+- Amazing package manager: `Cargo`. Productive installing and running of tasks and examples.
+- Rust is getting headlines in the security community as the go-to language for security tools. Equally interesting is offensive security + Rust [here](https://github.com/trickster0/OffensiveRust) and [here](https://github.com/skerkour/black-hat-rust).
 
 # :rocket: Quick Start
 
@@ -47,7 +46,7 @@ brew tap spectralops/tap && brew install keyscope
 
 ## Using keyscope
 
-You can try out validating a key for a provider, say, Github (assuming the key  is in the `GITHUB_TOKEN` environment variable):
+You can try out validating a key for a provider, say, Github (assuming the key is in the `GITHUB_TOKEN` environment variable):
 
 ```
 $ keyscope validate github $GITHUB_TOKEN
@@ -63,13 +62,13 @@ $ keyscope validate --list
   .
 
 twilio:validation
-keyscope validate twilio -p twilio_1 twilio_2
+keyscope validate twilio -p twilio_1 -p twilio_2
 
 twitter:validation
 keyscope validate twitter -p twitter_1
 
 zendesk:validation
-keyscope validate zendesk -p zendesk_1 zendesk_2
+keyscope validate zendesk -p zendesk_1 -p zendesk_2
 
 Total 44 providers available.
 $
@@ -78,7 +77,7 @@ $
 And what parameters are required for a certain provider by running (say, `stripe`):
 
 ```
-$ keyscope validate stripe --requirements
+$ keyscope requirements stripe
 
 provider stripe requires:
  - param: p1
@@ -89,11 +88,10 @@ $
 Finally the general structure of the `validate` command is:
 
 ```
-$ keyscope validate PROVIDER -p PARAM1 PARAM2 .. PARAM_N
+$ keyscope validate PROVIDER -p PARAM1 -p PARAM2 .. -p PARAM_N
 ```
 
 # :white_check_mark: Validation: key should be active
-
 
 You can validate a specific provider like so:
 
@@ -104,20 +102,20 @@ $ keyscope validate twilio -p $TWILIO_KEY
 With the general pattern of:
 
 ```
-$ keyscope validate PROVIDER -p PARAM1 PARAM2 ...
+$ keyscope validate PROVIDER -p PARAM1 -p PARAM2 ...
 ```
 
 The number of keys/params would change based on authentication type:
 
-* `Bearer` - usually just a single key (token)
-* `Basic Auth` - usually 2 keys: user, password
-* `OAuth` - usually 2 keys: client_id, client_secret
-* And others.
+- `Bearer` - usually just a single key (token)
+- `Basic Auth` - usually 2 keys: user, password
+- `OAuth` - usually 2 keys: client_id, client_secret
+- And others.
 
 Each provider in Keyscope will tell you what it requires using `requirements`:
 
 ```
-$ keyscope validate twilio --requirements
+$ keyscope requirements twilio
 ```
 
 You'll get a report:
@@ -188,9 +186,6 @@ twilio,tw-key1,,,
 
 You can specify as many key columns as you like, as long as you provide an _empty_ value for providers which don't have that many keys, and all rows contain the same amount of cells.
 
-
-
-
 ## Audit inactive keys
 
 If you have a dump of keys from your vault that are stale have expiry and should have been rotated, you want to test that they are all stale:
@@ -199,13 +194,11 @@ If you have a dump of keys from your vault that are stale have expiry and should
 $ keyscope --flip validate --csv-in my-key-audit.csv
 ```
 
-
 # :link: Supported providers
 
 We're always adding [new providers](src/defs.yaml), keep a link to this list or watch this repo to get updated.
 
 We use our [`service_policy_kit`](https://github.com/spectralops/service-policy-kit) library to specify interactions with services and their policies, if you find a service [not in this list](src/defs.yaml) feel free to open an issue or contribute back.
-
 
 <!-- providers -->
 <table>
@@ -229,8 +222,9 @@ validation
 <td colspan="3">
 
 ```
-keyscope validate tester -p TESTER_1 TESTER_2
+keyscope validate tester -p TESTER_1 -p TESTER_2
 ```
+
 </td></tr>
 <tr><td>
 
@@ -254,6 +248,7 @@ validation
 ```
 keyscope validate infura -p INFURA_1
 ```
+
 </td></tr>
 <tr><td>
 
@@ -277,6 +272,7 @@ validation
 ```
 keyscope validate covalenthq -p COVALENTHQ_1
 ```
+
 </td></tr>
 <tr><td>
 
@@ -300,6 +296,7 @@ validation
 ```
 keyscope validate asana -p ASANA_1
 ```
+
 </td></tr>
 <tr><td>
 
@@ -323,6 +320,7 @@ validation
 ```
 keyscope validate bitly -p BITLY_1
 ```
+
 </td></tr>
 <tr><td>
 
@@ -346,6 +344,7 @@ validation
 ```
 keyscope validate ipstack -p IPSTACK_1
 ```
+
 </td></tr>
 <tr><td>
 
@@ -367,8 +366,9 @@ validation
 <td colspan="3">
 
 ```
-keyscope validate localytics -p LOCALYTICS_1 LOCALYTICS_2
+keyscope validate localytics -p LOCALYTICS_1 -p LOCALYTICS_2
 ```
+
 </td></tr>
 <tr><td>
 
@@ -390,8 +390,9 @@ validation
 <td colspan="3">
 
 ```
-keyscope validate algolia -p ALGOLIA_1 ALGOLIA_2 ALGOLIA_3
+keyscope validate algolia -p ALGOLIA_1 -p ALGOLIA_2 -p ALGOLIA_3
 ```
+
 </td></tr>
 <tr><td>
 
@@ -413,8 +414,9 @@ validation
 <td colspan="3">
 
 ```
-keyscope validate branchio -p BRANCHIO_1 BRANCHIO_2
+keyscope validate branchio -p BRANCHIO_1 -p BRANCHIO_2
 ```
+
 </td></tr>
 <tr><td>
 
@@ -436,8 +438,9 @@ validation
 <td colspan="3">
 
 ```
-keyscope validate browserstack -p BROWSERSTACK_1 BROWSERSTACK_2
+keyscope validate browserstack -p BROWSERSTACK_1 -p BROWSERSTACK_2
 ```
+
 </td></tr>
 <tr><td>
 
@@ -461,6 +464,7 @@ validation
 ```
 keyscope validate buildkite -p BUILDKITE_1
 ```
+
 </td></tr>
 <tr><td>
 
@@ -484,6 +488,7 @@ validation
 ```
 keyscope validate datadog -p DATADOG_1
 ```
+
 </td></tr>
 <tr><td>
 
@@ -507,6 +512,7 @@ validation
 ```
 keyscope validate github -p GITHUB_1
 ```
+
 </td></tr>
 <tr><td>
 
@@ -528,8 +534,9 @@ validation
 <td colspan="3">
 
 ```
-keyscope validate github-ent -p GITHUB-ENT_1 GITHUB-ENT_2
+keyscope validate github-ent -p GITHUB-ENT_1 -p GITHUB-ENT_2
 ```
+
 </td></tr>
 <tr><td>
 
@@ -553,6 +560,7 @@ validation
 ```
 keyscope validate dropbox -p DROPBOX_1
 ```
+
 </td></tr>
 <tr><td>
 
@@ -576,6 +584,7 @@ validation
 ```
 keyscope validate gitlab -p GITLAB_1
 ```
+
 </td></tr>
 <tr><td>
 
@@ -599,6 +608,7 @@ validation
 ```
 keyscope validate heroku -p HEROKU_1
 ```
+
 </td></tr>
 <tr><td>
 
@@ -620,8 +630,9 @@ validation
 <td colspan="3">
 
 ```
-keyscope validate mailchimp -p MAILCHIMP_1 MAILCHIMP_2
+keyscope validate mailchimp -p MAILCHIMP_1 -p MAILCHIMP_2
 ```
+
 </td></tr>
 <tr><td>
 
@@ -645,6 +656,7 @@ validation
 ```
 keyscope validate mailgun -p MAILGUN_1
 ```
+
 </td></tr>
 <tr><td>
 
@@ -668,6 +680,7 @@ validation
 ```
 keyscope validate pagerduty -p PAGERDUTY_1
 ```
+
 </td></tr>
 <tr><td>
 
@@ -691,6 +704,7 @@ validation
 ```
 keyscope validate circleci -p CIRCLECI_1
 ```
+
 </td></tr>
 <tr><td>
 
@@ -714,6 +728,7 @@ validation
 ```
 keyscope validate facebook-access-token -p FACEBOOK-ACCESS-TOKEN_1
 ```
+
 </td></tr>
 <tr><td>
 
@@ -735,8 +750,9 @@ validation
 <td colspan="3">
 
 ```
-keyscope validate salesforce -p SALESFORCE_1 SALESFORCE_2
+keyscope validate salesforce -p SALESFORCE_1 -p SALESFORCE_2
 ```
+
 </td></tr>
 <tr><td>
 
@@ -760,6 +776,7 @@ validation
 ```
 keyscope validate jumpcloud -p JUMPCLOUD_1
 ```
+
 </td></tr>
 <tr><td>
 
@@ -781,8 +798,9 @@ validation
 <td colspan="3">
 
 ```
-keyscope validate saucelabs-us -p SAUCELABS-US_1 SAUCELABS-US_2
+keyscope validate saucelabs-us -p SAUCELABS-US_1 -p SAUCELABS-US_2
 ```
+
 </td></tr>
 <tr><td>
 
@@ -804,8 +822,9 @@ validation
 <td colspan="3">
 
 ```
-keyscope validate saucelabs-eu -p SAUCELABS-EU_1 SAUCELABS-EU_2
+keyscope validate saucelabs-eu -p SAUCELABS-EU_1 -p SAUCELABS-EU_2
 ```
+
 </td></tr>
 <tr><td>
 
@@ -829,6 +848,7 @@ validation
 ```
 keyscope validate sendgrid -p SENDGRID_1
 ```
+
 </td></tr>
 <tr><td>
 
@@ -852,6 +872,7 @@ validation
 ```
 keyscope validate slack -p SLACK_1
 ```
+
 </td></tr>
 <tr><td>
 
@@ -875,6 +896,7 @@ validation
 ```
 keyscope validate slack-webhook -p SLACK-WEBHOOK_1
 ```
+
 </td></tr>
 <tr><td>
 
@@ -898,6 +920,7 @@ validation
 ```
 keyscope validate stripe -p STRIPE_1
 ```
+
 </td></tr>
 <tr><td>
 
@@ -919,8 +942,9 @@ validation
 <td colspan="3">
 
 ```
-keyscope validate travisci -p TRAVISCI_1 TRAVISCI_2
+keyscope validate travisci -p TRAVISCI_1 -p TRAVISCI_2
 ```
+
 </td></tr>
 <tr><td>
 
@@ -942,8 +966,9 @@ validation
 <td colspan="3">
 
 ```
-keyscope validate twilio -p TWILIO_1 TWILIO_2
+keyscope validate twilio -p TWILIO_1 -p TWILIO_2
 ```
+
 </td></tr>
 <tr><td>
 
@@ -967,6 +992,7 @@ validation
 ```
 keyscope validate twitter -p TWITTER_1
 ```
+
 </td></tr>
 <tr><td>
 
@@ -988,8 +1014,9 @@ validation
 <td colspan="3">
 
 ```
-keyscope validate zendesk -p ZENDESK_1 ZENDESK_2
+keyscope validate zendesk -p ZENDESK_1 -p ZENDESK_2
 ```
+
 </td></tr>
 <tr><td>
 
@@ -1011,8 +1038,9 @@ validation
 <td colspan="3">
 
 ```
-keyscope validate firebase -p FIREBASE_1 FIREBASE_2
+keyscope validate firebase -p FIREBASE_1 -p FIREBASE_2
 ```
+
 </td></tr>
 <tr><td>
 
@@ -1034,8 +1062,9 @@ validation
 <td colspan="3">
 
 ```
-keyscope validate aws -p AWS_1 AWS_2
+keyscope validate aws -p AWS_1 -p AWS_2
 ```
+
 </td></tr>
 <tr><td>
 
@@ -1057,8 +1086,9 @@ validation
 <td colspan="3">
 
 ```
-keyscope validate elastic-apm-secret -p ELASTIC-APM-SECRET_1 ELASTIC-APM-SECRET_2
+keyscope validate elastic-apm-secret -p ELASTIC-APM-SECRET_1 -p ELASTIC-APM-SECRET_2
 ```
+
 </td></tr>
 <tr><td>
 
@@ -1080,8 +1110,9 @@ validation
 <td colspan="3">
 
 ```
-keyscope validate artifactory -p ARTIFACTORY_1 ARTIFACTORY_2
+keyscope validate artifactory -p ARTIFACTORY_1 -p ARTIFACTORY_2
 ```
+
 </td></tr>
 <tr><td>
 
@@ -1103,8 +1134,9 @@ validation
 <td colspan="3">
 
 ```
-keyscope validate ibm-cos -p IBM-COS_1 IBM-COS_2
+keyscope validate ibm-cos -p IBM-COS_1 -p IBM-COS_2
 ```
+
 </td></tr>
 <tr><td>
 
@@ -1128,6 +1160,7 @@ validation
 ```
 keyscope validate ibm-iam -p IBM-IAM_1
 ```
+
 </td></tr>
 <tr><td>
 
@@ -1149,8 +1182,9 @@ validation
 <td colspan="3">
 
 ```
-keyscope validate ibm-cloudant -p IBM-CLOUDANT_1 IBM-CLOUDANT_2 IBM-CLOUDANT_3
+keyscope validate ibm-cloudant -p IBM-CLOUDANT_1 -p IBM-CLOUDANT_2 -p IBM-CLOUDANT_3
 ```
+
 </td></tr>
 <tr><td>
 
@@ -1172,8 +1206,9 @@ validation
 <td colspan="3">
 
 ```
-keyscope validate softlayer -p SOFTLAYER_1 SOFTLAYER_2
+keyscope validate softlayer -p SOFTLAYER_1 -p SOFTLAYER_2
 ```
+
 </td></tr>
 <tr><td>
 
@@ -1197,6 +1232,7 @@ validation
 ```
 keyscope validate square -p SQUARE_1
 ```
+
 </td></tr>
 <tr><td>
 
@@ -1220,6 +1256,7 @@ validation
 ```
 keyscope validate telegram-bot -p TELEGRAM-BOT_1
 ```
+
 </td></tr>
 <tr><td>
 
@@ -1243,6 +1280,7 @@ validation
 ```
 keyscope validate bingmaps -p BINGMAPS_1
 ```
+
 </td></tr>
 <tr><td>
 
@@ -1266,6 +1304,7 @@ validation
 ```
 keyscope validate buttercms -p BUTTERCMS_1
 ```
+
 </td></tr>
 <tr><td>
 
@@ -1289,6 +1328,7 @@ validation
 ```
 keyscope validate wakatime -p WAKATIME_1
 ```
+
 </td></tr>
 <tr><td>
 
@@ -1312,6 +1352,7 @@ validation
 ```
 keyscope validate calendly -p CALENDLY_1
 ```
+
 </td></tr>
 <tr><td>
 
@@ -1335,6 +1376,7 @@ validation
 ```
 keyscope validate shodan -p SHODAN_1
 ```
+
 </td></tr>
 <tr><td>
 
@@ -1358,6 +1400,7 @@ validation
 ```
 keyscope validate opsgenie -p OPSGENIE_1
 ```
+
 </td></tr>
 <tr><td>
 
@@ -1381,6 +1424,7 @@ validation
 ```
 keyscope validate pendo -p PENDO_1
 ```
+
 </td></tr>
 <tr><td>
 
@@ -1404,6 +1448,7 @@ validation
 ```
 keyscope validate hubspot -p HUBSPOT_1
 ```
+
 </td></tr>
 <tr><td>
 
@@ -1427,38 +1472,10 @@ validation
 ```
 keyscope validate lokalise -p LOKALISE_1
 ```
+
 </td></tr>
 </table>
 <!-- /providers -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 # :cake: Adding your own providers
 
@@ -1485,10 +1502,10 @@ providers:
       #
       request:
         params:
-        - name: hookbin_1
-          desc: hookbin ID (https://hookb.in)
-        - name: hookbin_2
-          desc: fake key to put as a query param
+          - name: hookbin_1
+            desc: hookbin ID (https://hookb.in)
+          - name: hookbin_2
+            desc: fake key to put as a query param
         id: "postbin:validation"
         desc: "Postbin: valid key"
         # variable interpolation is good for all fields
@@ -1496,7 +1513,7 @@ providers:
         method: post
         # you can also use headers, body, form, basic_auth and more (see defs.yaml)
 
-      # 
+      #
       # the policy part: all values are actually regular expressions and are matched against service response
       #
       response:
@@ -1512,12 +1529,12 @@ To validate if a dropbox API key works, we first need to learn about the canonic
 
 First stop, API docs:
 
-* Dropbox has an [API Explorer](https://dropbox.github.io/dropbox-api-v2-explorer) which is super useful
+- Dropbox has an [API Explorer](https://dropbox.github.io/dropbox-api-v2-explorer) which is super useful
 
 Next stop, we want to find an API call that is a representative for:
 
-* Has to be authenticated
-* Has to indicate that when accessed successfully with our candidate key, the key has some authoritative value. Which means, that if exposed, contains significant risk.
+- Has to be authenticated
+- Has to indicate that when accessed successfully with our candidate key, the key has some authoritative value. Which means, that if exposed, contains significant risk.
 
 For this example, getting our current account sounds like something that only when we identify who we are - we're able to do.
 
@@ -1526,12 +1543,12 @@ We'll select [get_current_account](https://www.dropbox.com/developers/documentat
 Let's start forming our interaction. First the needed skeleton: containing the name of the provider (`dropbox`), its ID and description below, as well as parameters required and their name and description:
 
 ```yaml
-  dropbox:
-    validation:
-      request:
-        id: "dropbox:validation"
-        desc: "dropbox: valid API credentials"
-        params:
+dropbox:
+  validation:
+    request:
+      id: "dropbox:validation"
+      desc: "dropbox: valid API credentials"
+      params:
         - name: dropbox_1
           desc: dropbox token
 ```
@@ -1550,21 +1567,20 @@ aws_1
 Then, details about actually making an HTTP call, as required by Dropbox (Bearer token authentication).
 
 ```yaml
-        uri: https://api.dropboxapi.com/2/users/get_current_account
-        method: post
-        headers:
-          Authorization:
-          - Bearer {{dropbox_1}}
+uri: https://api.dropboxapi.com/2/users/get_current_account
+method: post
+headers:
+  Authorization:
+    - Bearer {{dropbox_1}}
 ```
 
 Note that per standard, all HTTP header fields are actually _arrays_. It's OK to always make an array of size _one_ if you only have one value (most common case).
 
 We also see _variable interpolation_ here. Where `{{dropbox_1}}` will get replaced by keyscope in time before making the actual call.
 
-
 Finally, we want to make sure we answer the question:
 
-* What does it mean to have a successful call?
+- What does it mean to have a successful call?
 
 In our case, the Dropbox API call returns `HTTP OK` on success, which means a `200` status code.
 
@@ -1577,13 +1593,13 @@ dropbox:
       id: "dropbox:validation"
       desc: "dropbox: valid API credentials"
       params:
-      - name: dropbox_1
-        desc: dropbox token
+        - name: dropbox_1
+          desc: dropbox token
       uri: https://api.dropboxapi.com/2/users/get_current_account
       method: post
       headers:
         Authorization:
-        - Bearer {{dropbox_1}}
+          - Bearer {{dropbox_1}}
     response:
       status_code: "200"
 ```
@@ -1596,12 +1612,9 @@ $ keyscope -f providers.yaml validate dropbox -p MY_KEY
 
 Now you can keep this in your private `providers.yaml` file or contribute it back to keyscope if you think other people might enjoy using it - we're happy to accept pull requests.
 
-
-
 # Thanks
 
 To all [Contributors](https://github.com/spectralops/keyscope/graphs/contributors) - you make this happen, thanks!
-
 
 # Copyright
 
