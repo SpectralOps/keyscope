@@ -4,7 +4,7 @@ custom:validation
 keyscope validate custom -p custom_1
 
 custom_2:validation
-keyscope validate custom_2 -p custom_2_1 custom_2_2
+keyscope validate custom_2 -p custom_2_1 -p custom_2_2
 
 Total 2 providers available.
 
@@ -25,7 +25,7 @@ provider custom requires:
    optional: false
 
 To use from the CLI, run:
-  keyscope validate custom -p PARAM1 PARAM2 ...
+  keyscope validate custom -p PARAM1 -p PARAM2 ...
 
 ```
 

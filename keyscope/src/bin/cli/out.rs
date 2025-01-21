@@ -48,7 +48,7 @@ pub fn requirements_results(provider: &Provider, params: &[Param]) -> String {
 
     format!(
         "provider {} requires:\n{params_str}\n\nTo use from the CLI, run:\n  keyscope validate {} \
-         -p PARAM1 PARAM2 ...",
+         -p PARAM1 -p PARAM2 ...",
         provider.name(),
         provider.name()
     )
@@ -73,9 +73,9 @@ pub fn supported_providers(providers: &[Provider]) -> String {
                         .as_ref()
                         .map(|p| p
                             .iter()
-                            .map(|p| p.name.clone())
+                            .map(|param| style(param.name.clone()).blue().to_string())
                             .collect::<Vec<_>>()
-                            .join(" "))
+                            .join(" -p "))
                         .unwrap_or_default()
                 )
                 .blue()
