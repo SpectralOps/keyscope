@@ -1,6 +1,7 @@
 use serde_derive::{Deserialize, Serialize};
 use service_policy_kit::data::{Context, Interaction, Param};
 use service_policy_kit::runner::{RunOptions, RunnerReport, SequenceRunner};
+use std::sync::LazyLock;
 
 use crate::{config::DEFAULT_CONFIG, Error, Result};
 
@@ -24,6 +25,7 @@ impl Provider {
 
     /// Get provider name
     #[must_use]
+    #[allow(clippy::missing_const_for_fn)]
     pub fn name(&self) -> &str {
         &self.name
     }
@@ -117,9 +119,9 @@ impl Provider {
 macro_rules! define_provider_type {
     ($(($struct_name:ident, $key:expr)),*) => {
         $(
-            lazy_static::lazy_static! {
-                pub static ref $struct_name: Provider = Provider::new($key.to_string(), DEFAULT_CONFIG.providers.get($key).unwrap().clone());
-            }
+            pub static $struct_name: LazyLock<Provider> = LazyLock::new(|| {
+                Provider::new($key.to_string(), DEFAULT_CONFIG.providers.get($key).unwrap().clone())
+            });
         )*
 
         #[must_use] pub fn all_providers_ref() -> Vec<&'static Provider> {
@@ -175,6 +177,7 @@ define_provider_type!(
     (SENDGRID, "sendgrid"),
     (SLACK, "slack"),
     (SLACK_WEBHOOK, "slack-webhook"),
+    (SLACK_APP_KEY, "slack-app-key"),
     (STRIPE, "stripe"),
     (TRAVISCI, "travisci"),
     (TWILIO, "twilio"),
@@ -198,7 +201,12 @@ define_provider_type!(
     (OPSGENIE, "opsgenie"),
     (PENDO, "pendo"),
     (HUBSPOT, "hubspot"),
-    (LOKALISE, "lokalise")
+    (LOKALISE, "lokalise"),
+    (SNYK, "snyk"),
+    (OPENAPI_AI_KEY, "openai-api-key"),
+    (OKTA, "okta"),
+    (ARTIFACTORY_ACCESS_TOKEN, "artifactory-access-token"),
+    (GCP_API_KEY, "gcp-api-key")
 );
 
 #[derive(Debug, Clone, Serialize, Deserialize)]

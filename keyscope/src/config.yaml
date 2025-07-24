@@ -543,6 +543,28 @@ providers:
       invalid:
         status_code: "5\\d\\d"
 
+  slack-app-key:
+    validation:
+      request:
+        id: "slack-app-key:validation"
+        desc: "slack-app-key: valid App key credentials"
+        params:
+        - name: slack-app-key_1
+          desc: slack app key
+        uri: "https://slack.com/api/apps.connections.open"
+        method: post
+        headers:
+          Content-Type:
+          - application/json
+          Authorization:
+          - "Bearer {{slack-app-key_1}}"
+      response:
+        status_code: "200"
+        body: "\"ok\":\\s*true"
+      invalid:
+        status_code: "200"
+        body: "\"ok\":\\s*false"
+
 
   stripe:
     validation:
@@ -1000,3 +1022,99 @@ providers:
         status_code: "200"
       invalid:
         status_code: "4\\d\\d"
+
+  snyk:
+    validation:
+      request:
+        id: "snyk:validation"
+        desc: "snyk: Key"
+        params:
+        - name: snyk_1
+          desc: snyk token
+        uri: https://api.snyk.io/v1/user/me
+        method: get
+        headers:
+          Authorization: 
+          - "token {{snyk_1}}"
+      response:
+        status_code: "200"
+      invalid:
+        status_code: "4\\d\\d"
+
+  openai-api-key:
+    validation:
+      request:
+        id: "openai-api-key:validation"
+        desc: "openai-api-key: Key"
+        params:
+        - name: openai-api-key_1
+          desc: openai-api-key api key 
+        uri: https://api.openai.com/v1/models
+        method: get
+        headers:
+          Authorization: 
+          - "Bearer {{openai-api-key_1}}"
+      response:
+        status_code: "200"
+      invalid:
+        status_code: "4\\d\\d"
+
+  okta:
+    validation:
+      request:
+        id: "okta:validation"
+        desc: "okta: valid API token"
+        params:
+        - name: okta_1
+          desc: okta domain (without https://)
+        - name: okta_2
+          desc: okta API token
+        uri: https://{{okta_1}}/api/v1/users/me
+        method: get
+        headers:
+          Accept: 
+          - "application/json"
+          Content-Type:
+          - application/json
+          Authorization: 
+          - "SSWS {{okta_2}}"
+      response:
+        status_code: "200"
+      invalid:
+        status_code: "4\\d\\d"
+
+  artifactory-access-token:
+    validation:
+      request:
+        id: "artifactory-access-token:validation"
+        desc: "artifactory-access-token: valid access token"
+        params:
+        - name: artifactory-access-token_1
+          desc: artifactory host
+        - name: artifactory-access-token_2
+          desc: artifactory access token (JWT)
+        uri: "{{artifactory-access-token_1}}/artifactory/api/system/ping"
+        method: get
+        headers:
+          Authorization: 
+          - "Bearer {{artifactory-access-token_2}}"
+      response:
+        status_code: "200"
+      invalid:
+        status_code: "4\\d\\d"
+
+  gcp-api-key:
+    validation:
+      request:
+        id: "gcp-api-key:validation"
+        desc: "Google Cloud Platform: valid API key"
+        params:
+        - name: gcp-api-key_1
+          desc: GCP API key
+        uri: https://www.googleapis.com/discovery/v1/apis?key={{gcp-api-key_1}}
+        method: get
+      response:
+        status_code: "200"
+      invalid:
+        status_code: "4\\d\\d"
+

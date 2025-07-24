@@ -1,14 +1,12 @@
 use std::collections::HashMap;
+use std::sync::LazyLock;
 
-use lazy_static::lazy_static;
 use serde_derive::{Deserialize, Serialize};
 
 use crate::{providers, Error, Result};
 
-lazy_static! {
-    pub static ref DEFAULT_CONFIG: Definitions =
-        serde_yaml::from_str(include_str!("config.yaml")).unwrap();
-}
+pub static DEFAULT_CONFIG: LazyLock<Definitions> =
+    LazyLock::new(|| serde_yaml::from_str(include_str!("config.yaml")).unwrap());
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Definitions {
