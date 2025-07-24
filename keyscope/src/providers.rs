@@ -175,6 +175,7 @@ define_provider_type!(
     (SENDGRID, "sendgrid"),
     (SLACK, "slack"),
     (SLACK_WEBHOOK, "slack-webhook"),
+    (SLACK_APP_KEY, "slack-app-key"),
     (STRIPE, "stripe"),
     (TRAVISCI, "travisci"),
     (TWILIO, "twilio"),
@@ -198,7 +199,12 @@ define_provider_type!(
     (OPSGENIE, "opsgenie"),
     (PENDO, "pendo"),
     (HUBSPOT, "hubspot"),
-    (LOKALISE, "lokalise")
+    (LOKALISE, "lokalise"),
+    (SNYK, "snyk"),
+    (OPENAPI_AI_KEY, "openai-api-key"),
+    (OKTA, "okta"),
+    (ARTIFACTORY_ACCESS_TOKEN, "artifactory-access-token"),
+    (GCP_API_KEY, "gcp-api-key")
 );
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
