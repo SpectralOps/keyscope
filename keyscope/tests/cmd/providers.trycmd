@@ -21,6 +21,9 @@ keyscope validate algolia -p algolia_1 -p algolia_2 -p algolia_3
 artifactory:validation
 keyscope validate artifactory -p artifactory_1 -p artifactory_2
 
+artifactory-access-token:validation
+keyscope validate artifactory-access-token -p artifactory-access-token_1 -p artifactory-access-token_2
+
 asana:validation
 keyscope validate asana -p asana_1
 
@@ -69,6 +72,9 @@ keyscope validate facebook-access-token -p facebook-access-token_1
 firebase:validation
 keyscope validate firebase -p firebase_1 -p firebase_2
 
+gcp-api-key:validation
+keyscope validate gcp-api-key -p gcp-api-key_1
+
 github:validation
 keyscope validate github -p github_1
 
@@ -114,6 +120,12 @@ keyscope validate mailchimp -p mailchimp_1 -p mailchimp_2
 mailgun:validation
 keyscope validate mailgun -p mailgun_1
 
+okta:validation
+keyscope validate okta -p okta_1 -p okta_2
+
+openai-api-key:validation
+keyscope validate openai-api-key -p openai-api-key_1
+
 opsgenie:validation
 keyscope validate opsgenie -p opsgenie_1
 
@@ -141,8 +153,14 @@ keyscope validate shodan -p shodan_1
 slack:validation
 keyscope validate slack -p slack_1
 
+slack-app-key:validation
+keyscope validate slack-app-key -p slack-app-key_1
+
 slack-webook:validation
 keyscope validate slack-webhook -p slack-webhook_1
+
+snyk:validation
+keyscope validate snyk -p snyk_1
 
 softlayer:validation
 keyscope validate softlayer -p softlayer_1 -p softlayer_2
@@ -174,6 +192,6 @@ keyscope validate wakatime -p wakatime_1
 zendesk:validation
 keyscope validate zendesk -p zendesk_1 -p zendesk_2
 
-Total 53 providers available.
+Total 59 providers available.
 
 ```

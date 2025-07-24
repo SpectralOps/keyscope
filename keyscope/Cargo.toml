@@ -2,6 +2,7 @@
 name = "keyscope"
 version = "1.4.1"
 edition = "2021"
+rust-version = "1.80.0"
 license = "Apache-2.0"
 readme = "../README.md"
 description = "Keyscope is a key and secret workflow "
@@ -30,7 +31,6 @@ serde = { version = "1.0.200" }
 serde_derive = "1.0.200"
 serde_yaml = { version = "0.9.34" }
 serde_variant = { version = "0.1.3" }
-lazy_static = { version = "1.4.0" }
 thiserror = { version = "1.0.59" }
 anyhow = { version = "1.0.82" }
 console = { version = "0.15.8", optional = true }

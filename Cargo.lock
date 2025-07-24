@@ -1030,7 +1030,6 @@ dependencies = [
  "anyhow",
  "clap",
  "console 0.15.8",
- "lazy_static",
  "serde",
  "serde_derive",
  "serde_variant",
