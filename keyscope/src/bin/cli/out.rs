@@ -7,6 +7,7 @@ use keyscope::providers::Provider;
 use serde::{Deserialize, Serialize};
 use serde_variant::to_variant_name;
 use service_policy_kit::data::Param;
+use std::fmt::Write;
 
 #[derive(clap::ValueEnum, Debug, Clone, Deserialize, Serialize)]
 pub enum Reporter {
@@ -62,7 +63,8 @@ pub fn supported_providers(providers: &[Provider]) -> String {
 
     for provider in &providers {
         if let Some(validation) = provider.config().validation.as_ref() {
-            result.push_str(&format!(
+            let _ = write!(
+                result,
                 "{}\nkeyscope validate {} -p {}\n\n",
                 style(validation.request.get_id()).magenta(),
                 style(provider.name()).yellow(),
@@ -79,15 +81,16 @@ pub fn supported_providers(providers: &[Provider]) -> String {
                         .unwrap_or_default()
                 )
                 .blue()
-            ));
+            );
         }
     }
-    result.push_str(&format!(
+    let _ = write!(
+        result,
         "Total {} providers available.",
         providers
             .iter()
             .filter(|provider| provider.config().validation.is_some())
             .count(),
-    ));
+    );
     result
 }

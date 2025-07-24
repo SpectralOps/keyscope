@@ -1,7 +1,5 @@
 use std::env;
 
-use keyscope;
-
 fn main() {
     let github_key = env::args().nth(1).unwrap_or_default();
 
